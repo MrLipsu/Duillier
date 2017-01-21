@@ -9,7 +9,7 @@ class InscriptionController extends Controller
 {
     public function indexAction()
     {
-        $content = $this->get('templating')->render('DuillierSignInBundle:Default:index.html.twig');
+        $content = $this->get('templating')->render('DuillierSignInBundle:Inscription:formulaire.html.twig');
         return new Response($content);
     }
 }
