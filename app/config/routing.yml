@@ -1,3 +1,7 @@
+duillier_planning:
+    resource: "@DuillierPlanningBundle/Resources/config/routing.yml"
+    prefix:   /
+
 duillier_sign_in:
     resource: "@DuillierSignInBundle/Resources/config/routing.yml"
     prefix:   /
