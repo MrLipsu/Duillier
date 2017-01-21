@@ -4,4 +4,4 @@ duillier_sign_in_homepage:
 
 duillier_sign_in_formulaire:
     path:    /inscription
-    defaults: {_controller: DuillierSignInBundle:inscription:index}
+    defaults: {_controller: DuillierSignInBundle:Inscription:index}
