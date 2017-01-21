@@ -1,0 +1,3 @@
+duillier_sign_in_homepage:
+    path:     /
+    defaults: { _controller: DuillierSignInBundle:Default:index }

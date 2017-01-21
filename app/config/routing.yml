@@ -1,3 +1,7 @@
+duillier_sign_in:
+    resource: "@DuillierSignInBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
