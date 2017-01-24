@@ -1,0 +1,11 @@
+.divFormulaire{
+  width: 20%;
+  margin: auto;
+  margin-top: 2%
+
+}
+.formulaire{
+  border-style: solid;
+  text-align: center;
+  /*margin: 10%;*/
+}

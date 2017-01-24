@@ -3,50 +3,71 @@
   <head>
     <meta charset="utf-8">
     <title>Inscription</title>
+    <link rel="stylesheet" href="style.css" >
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
     <section>
 
-      <div class="divFormulaire">
-        <h1 class="titreForm">Formulaire d'inscription</h1>
-        <form class="formulaire3" action="" method="post">
-          <div class="form-group">
+      <div class="col-sm-5 divFormulaire ">
+        <h1 class="page-header text-center">Formulaire d'inscription</h1>
+        <form class="form-horizontal" action="" method="post">
+            <div class="  form-group">
+            <label  class="col-sm-4 control-label"for="nom">Nom</label>
+            <div class="col-sm-5">
+            <input type="text" name="nom" class=" form-control " value="" required>
+          </div>
+            </div>
 
-
-            <label  for="nom">nom</label><br>
-            <input type="text" name="nom" class="form-control" value="" required>
-            <br>
-
-            <label for="prenom">Prenom</label><br>
+            <div class="form-group">
+            <label   class="col-sm-4 control-label" for="prenom">Prenom</label>
+            <div class="col-sm-5">
             <input type="text" name="prenom"  class="form-control" value="" required>
-            <br>
+          </div>
+            </div>
 
-            <label for="adresse">Adresse</label><br>
+            <div class="form-group">
+            <label  class="col-sm-4 control-label" for="adresse">Adresse</label>
+            <div class="col-sm-5">
             <input type="text" name="prenom"  class="form-control" value="" required>
-            <br>
-
-            <label for="ville">ville</label><br>
+            </div>
+          </div>
+            <div class="form-group">
+            <label  class="col-sm-4 control-label" for="ville">Ville</label>
+            <div class="col-sm-5">
             <input type="text" name="ville"  class="form-control" value="" required>
-            <br>
+            </div>
+          </div>
 
-            <label for="codePostal">Code Postal</label><br>
+            <div class="form-group">
+            <label  class="col-sm-4 control-label" for="codePostal">Code Postal</label>
+            <div class="col-sm-5">
             <input type="text" name="codePostal"  class="form-control" value="" required>
-            <br>
+            </div>
+          </div>
 
-            <label for="email">email</label><br>
+            <div class="form-group">
+            <label  class="col-sm-4 control-label" for="email">email</label>
+            <div class="col-sm-5">
             <input type="text" name="email"  class="form-control" value="" required>
-            <br>
+            </div>
+          </div>
 
-            <label for="anneeNaissance">Année de Naissance</label><br>
+            <div class="form-group">
+            <label  class="col-sm-4 control-label" for="anneeNaissance">Année de Naissance</label>
+            <div class="col-sm-5">
             <input type="text" name="anneeNaissance"  class="form-control" value="" required>
-            <br>
+            </div>
+          </div>
 
-            <label for="idLicence">Numéro de licence</label><br>
+            <div class="form-group">
+            <label  class="col-sm-4 control-label" for="idLicence">Numéro de licence</label>
+            <div class="col-sm-5">
             <input type="text" name="idLicence"  class="form-control" value="" required>
-            <br>
+            </div>
+          </div>
 
-            <label for="estGaucher">Gaucher : </label>
+            <label class="col-sm-4 control-label"for="estGaucher">Gaucher : </label>
             <input type="checkbox" name="estGaucher"  class="form-control" value="1" required>
             <br>
 
@@ -98,11 +119,10 @@
             <textarea name="commentaire" rows="8" cols="80" class="form-control"></textarea>
             <br>
 
+            <div class="divSubmit">
+            <input type="submit" name="valider" class="btn btn-primary btn-s" value="valider">
+          </div>
 
-
-
-
-            <input type="submit" name="valider" value="valider">
           </div>
 
         </form>
