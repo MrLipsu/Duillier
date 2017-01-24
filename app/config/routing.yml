@@ -4,7 +4,7 @@ duillier_planning:
 
 duillier_sign_in:
     resource: "@DuillierSignInBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /signIn
 
 app:
     resource: "@AppBundle/Controller/"
