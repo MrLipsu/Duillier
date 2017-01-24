@@ -17,18 +17,5 @@ class Tireur
   private $_appartientGroupe;
 
 
-  public function getNumeroDePoste()
-  {
-      return $this->_numeroDePoste;
-  }
-
-  public function setNumeroDePoste($numeroPoste)
-  {
-      $this->_numeroDePoste = $numeroPoste;
-  }
-
-  public function __construct($numeroPoste)
-  {
-      $this->_numeroDePoste = $numeroPoste;
-  }
+ 
 }
