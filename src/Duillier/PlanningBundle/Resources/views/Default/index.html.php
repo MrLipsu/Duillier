@@ -1,7 +1,6 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=Library;charset=utf8', 'root', 'root');
-$bdd->exec('INSERT INTO Book(isbn, title, price) VALUES(1234567898,\'TestSymfony\',42)');
-echo "test";
+$bdd = new PDO('mysql:host=\'https://login-16.hoststar.ch/phpMyAdmin/\';dbname=tsduillier;charset=utf8', 'tsduillier', 'Perce-neige-2017');
+//$reponse = $bdd->query('INSERT INTO Poste(idPoste) VALUES(\'1\')');
 ?>
 
 <!DOCTYPE html>
