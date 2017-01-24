@@ -6,38 +6,108 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
-<section>
+    <section>
 
-  <div class="divFormulaire">
-    <h1 class="text-center">Formulaire d'inscription</h1>
-    <form class="form-horizontal" action="" method="post">
-      <p>
-        <label class="col-sm-4 control-label"for="username">Nom d'utilisateur : </label><br>
-        <input type="text" name="username" value="" required>
-        <br>
+      <div class="divFormulaire">
+        <h1 class="titreForm">Formulaire d'inscription</h1>
+        <form class="formulaire3" action="" method="post">
+          <div class="form-group">
 
-        <label class="col-sm-4 control-label"for="password">Mot de passe : </label><br>
-        <input type="password" name="password" value="" required>
-        <br>
 
-        <label  for="repeatPassword">Répéter le mot de passe</label><br>
-        <input type="password" name="repeatPassword" value="" required>
-        <br>
+            <label  for="nom">nom</label><br>
+            <input type="text" name="nom" class="form-control" value="" required>
+            <br>
 
-        <label  for="nom">nom</label><br>
-        <input type="text" name="nom" value="" required>
-        <br>
+            <label for="prenom">Prenom</label><br>
+            <input type="text" name="prenom"  class="form-control" value="" required>
+            <br>
 
-        <label for="nom">prenom</label><br>
-        <input type="text" name="prenom" value="" required>
-        <br>
+            <label for="adresse">Adresse</label><br>
+            <input type="text" name="prenom"  class="form-control" value="" required>
+            <br>
 
-        <input type="submit" name="valider" value="valider">
-      </p>
+            <label for="ville">ville</label><br>
+            <input type="text" name="ville"  class="form-control" value="" required>
+            <br>
 
-    </form>
+            <label for="codePostal">Code Postal</label><br>
+            <input type="text" name="codePostal"  class="form-control" value="" required>
+            <br>
 
-  </div>
-</section>
+            <label for="email">email</label><br>
+            <input type="text" name="email"  class="form-control" value="" required>
+            <br>
+
+            <label for="anneeNaissance">Année de Naissance</label><br>
+            <input type="text" name="anneeNaissance"  class="form-control" value="" required>
+            <br>
+
+            <label for="idLicence">Numéro de licence</label><br>
+            <input type="text" name="idLicence"  class="form-control" value="" required>
+            <br>
+
+            <label for="estGaucher">Gaucher : </label>
+            <input type="checkbox" name="estGaucher"  class="form-control" value="1" required>
+            <br>
+
+            <div class="divListeClub">
+              <label for="idClub">Club</label>
+              <select class="" name="listeClub">
+                <option value="arquebuse">arquebuse</option>
+              </select>
+            </div>
+
+            <div class="divListeGroupe">
+              <label for="nomGroupe">Groupe</label>
+              <select class="" name="listeClub">
+                <option value="pasDeGroupe">Pas de groupe</option>
+              </select>
+            </div>
+
+            <div class="divNbEssai">
+              <label for="nbEssai">Nombre d'essai</label>
+              <select class="" name="nbEssai">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div class="divNbEssai">
+              <label for="nbEssai">Nombre d'essai</label>
+              <select class="" name="nbEssai">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+              </select>
+            </div>
+
+            <label for="commentaire">Commentaire</label><br>
+            <textarea name="commentaire" rows="8" cols="80" class="form-control"></textarea>
+            <br>
+
+
+
+
+
+            <input type="submit" name="valider" value="valider">
+          </div>
+
+        </form>
+
+      </div>
+    </section>
   </body>
 </html>
