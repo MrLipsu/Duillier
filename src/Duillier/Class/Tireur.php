@@ -17,6 +17,7 @@ class Tireur extends Personne
   private $_appartientGroupe;
 
 
+
   public function getNumLicence(){
       return $this->_numLicence;
   }
@@ -129,4 +130,5 @@ class Tireur extends Personne
       //Todo
 
   }
+
 }
