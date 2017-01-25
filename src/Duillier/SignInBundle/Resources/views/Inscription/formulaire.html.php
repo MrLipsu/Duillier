@@ -7,17 +7,18 @@
 <head>
   <meta charset="utf-8">
   <title>Inscription</title>
-  <link rel="stylesheet" href="style.css" >
+  <!-- Le lien au fichier style.css ne marche pas -->
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
   <section>
-    
+
     <div class="col-sm-5 divFormulaire ">
       <h1 class="page-header text-center">Formulaire d'inscription</h1>
       <form class="form-horizontal" action="../planning" method="post">
 
-      <fieldset>
+      <fieldset class="coordonnees">
         <legend>Vos coordonnées</legend>
         <div class="form-group">
           <label  class="col-sm-4 control-label"for="nom">Nom</label>
@@ -75,7 +76,7 @@
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="tir">
         <legend>Votre tir</legend>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="estGaucher">Gaucher </label>
@@ -173,12 +174,13 @@
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="recap">
         <legend>Récapitulons</legend>
+
         <div class="form-group">
-          <label for="poste" class="col-sm-4 control-label">Votre poste</label>
+          <label for="jour" class="col-sm-4 control-label">Jour de tir</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo "3"; ?></p>
+            <p class="form-control-static"><?php echo "Vendredi 31 mars"; ?></p>
           </div>
         </div>
 
@@ -188,6 +190,15 @@
             <p class="form-control-static"><?php echo "9h15"; ?></p>
           </div>
         </div>
+
+        
+        <div class="form-group">
+          <label for="poste" class="col-sm-4 control-label">Votre poste</label>
+          <div class="col-sm-4">
+            <p class="form-control-static"><?php echo "3"; ?></p>
+          </div>
+        </div>
+
 
         <div class="form-group">
           <label for="prix" class="col-sm-4 control-label">Prix</label>
