@@ -12,12 +12,14 @@
 </head>
 <body>
   <section>
-
+    
     <div class="col-sm-5 divFormulaire ">
       <h1 class="page-header text-center">Formulaire d'inscription</h1>
       <form class="form-horizontal" action="../planning" method="post">
 
-        <div class="  form-group">
+      <fieldset>
+        <legend>Vos coordonnées</legend>
+        <div class="form-group">
           <label  class="col-sm-4 control-label"for="nom">Nom</label>
           <div class="col-sm-5">
             <input type="text" name="nom" class=" form-control " value="" required>
@@ -71,7 +73,10 @@
             <input type="text" name="anneeNaissance"  class="form-control" value="" required>
           </div>
         </div>
+      </fieldset>
 
+      <fieldset>
+        <legend>Votre tir</legend>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="estGaucher">Gaucher </label>
           <div class="col-sm-5">
@@ -161,9 +166,26 @@
         </div>
 
         <div class="form-group">
-          <label  class="col-sm-4 control-label" for="repas">Nombre d'essai</label>
+          <label  class="col-sm-4 control-label" for="repas">Nombre de repas</label>
           <div class="col-sm-5">
             <input type="number" step="1" value="0" min="0" max="9" for="repas">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Récapitulons</legend>
+        <div class="form-group">
+          <label for="poste" class="col-sm-4 control-label">Votre poste</label>
+          <div class="col-sm-4">
+            <p class="form-control-static"><?php echo "3"; ?></p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="debut" class="col-sm-4 control-label">Heure de début</label>
+          <div class="col-sm-4">
+            <p class="form-control-static"><?php echo "9h15"; ?></p>
           </div>
         </div>
 
@@ -194,8 +216,7 @@
             <textarea name="commentaire" rows="8" cols="80" class="form-control"></textarea>
           </div>
         </div>
-
-
+      </fieldset>
 
         <div class="col-sm-offset-4">
           <input type="submit" name="valider" class="btn btn-success btn-s" value="Valider">
