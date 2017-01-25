@@ -1,3 +1,7 @@
 duillier_sign_in_homepage:
     path:     /
     defaults: { _controller: DuillierSignInBundle:Default:index }
+
+duillier_sign_in_formulaire:
+    path:    /inscription
+    defaults: {_controller: DuillierSignInBundle:Inscription:index}

@@ -1,3 +1,12 @@
 duillier_planning_homepage:
+<<<<<<< HEAD
     path:     /planning
     defaults: { _controller: DuillierPlanningBundle:Default:index }
+=======
+    path:     /Planning/{page}
+    defaults:
+        _controller: DuillierPlanningBundle:Default:index
+        page:        1
+    requirements:
+        page: d\*
+>>>>>>> f9c91dc5d89bdfd85968af49bfb5e1030a3a37a0
