@@ -16,6 +16,7 @@
 
     <div class="col-sm-5 divFormulaire ">
       <h1 class="page-header text-center">Formulaire d'inscription</h1>
+
       <form class="form-horizontal" action="../planning" method="post">
 
       <fieldset class="coordonnees">
@@ -180,22 +181,22 @@
         <div class="form-group">
           <label for="jour" class="col-sm-4 control-label">Jour de tir</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo "Vendredi 31 mars"; ?></p>
+            <p class="form-control-static"><?php echo $_POST['jour']; ?></p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="debut" class="col-sm-4 control-label">Heure de début</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo "9h15"; ?></p>
+            <p class="form-control-static"><?php echo $_POST['heure']; ?></p>
           </div>
         </div>
 
-        
+
         <div class="form-group">
           <label for="poste" class="col-sm-4 control-label">Votre poste</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo "3"; ?></p>
+            <p class="form-control-static"><?php echo $_POST['poste']; ?></p>
           </div>
         </div>
 

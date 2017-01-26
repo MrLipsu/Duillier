@@ -1,6 +1,5 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
-
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +41,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
     if(isset($_POST['jour'])){
       $jour=$_POST['jour'];
     }
+
     $reponse = $bdd->query('SELECT date FROM jour WHERE date=\''.$jour.'\'');
     while ($donnees = $reponse->fetch()){
       //Conversion de la date en français
@@ -78,7 +78,16 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           echo '<th>'.$donnees['heure'].'</th>';
           //les boutons s'inscrire dans chaque colonne
           for($i=0;$i<6;$i++){
-            echo '<td><a href="signIn/inscription" class="btn btn-default">S\'inscrire</a></td>';
+            ?>
+            <td>
+            <form action="signIn/inscription" method="post">
+              <input type="submit" class="btn btn-success" value="S'inscrire"></input>
+              <input type="hidden" name="jour" value='<?php echo $jour ?>'>
+              <input type="hidden" name="poste" value='<?php echo $i+1 ?>'>
+              <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
+            </form>
+            </td>
+            <?php
           }
           echo '</tr>';
         }
