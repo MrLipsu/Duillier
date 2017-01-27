@@ -8,15 +8,11 @@
   <meta charset="utf-8">
   <title>Inscription</title>
   <!-- Le lien au fichier style.css ne marche pas -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/SignInBundle/style.css">
+  <link rel="stylesheet" href="../../css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   <script src="../../jQuery/jQuery.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      console.log("JQuery récupéré !");
-  });
-  </script>
+  <script src="../../jQuery/SignInBundle/Inscription.js"></script>
 
 </head>
 <body>
