@@ -1,5 +1,5 @@
 <?php
-  $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +10,14 @@
   <!-- Le lien au fichier style.css ne marche pas -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <script src="../../jQuery/jQuery.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      console.log("JQuery récupéré !");
+  });
+  </script>
+
 </head>
 <body>
   <section>
