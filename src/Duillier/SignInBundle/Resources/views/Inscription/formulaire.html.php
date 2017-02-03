@@ -1,5 +1,5 @@
 <?php
-  $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
 <!DOCTYPE html>
@@ -21,62 +21,62 @@
     <div class="col-sm-5 divFormulaire ">
       <h1 class="page-header text-center">Formulaire d'inscription</h1>
 
-      <form class="form-horizontal" action="../planning" method="post">
+      <form class="form-horizontal" action="../planning" method="post" onsubmit="return verifForm(this)">
 
       <fieldset class="coordonnees">
         <legend>Vos coordonnées</legend>
         <div class="form-group">
           <label  class="col-sm-4 control-label"for="nom">Nom</label>
           <div class="col-sm-5">
-            <input type="text" name="nom" class=" form-control " value="" required>
+            <input type="text" name="nom" class="form-control" value="" onblur="verifNom(this)" required>
           </div>
         </div>
 
         <div class="form-group">
           <label   class="col-sm-4 control-label" for="prenom">Prénom</label>
           <div class="col-sm-5">
-            <input type="text" name="prenom"  class="form-control" value="" required>
+            <input type="text" name="prenom"  class="form-control" value="" onblur="verifNom(this)" required>
           </div>
         </div>
 
         <div class="form-group">
           <label  class="col-sm-4 control-label" for="idLicence">Numéro de licence</label>
           <div class="col-sm-5">
-            <input type="text" name="idLicence"  class="form-control" value="" required>
+            <input type="text" name="idLicence"  class="form-control" value="" onblur="verifLicence(this)" required>
           </div>
         </div>
 
         <div class="form-group">
           <label  class="col-sm-4 control-label" for="adresse">Adresse</label>
           <div class="col-sm-5">
-            <input type="text" name="prenom"  class="form-control" value="" required>
+            <input type="text" name="adresse"  class="form-control" value="" onblur="verifAdresse(this)" required>
           </div>
         </div>
         <div class="form-group">
           <label  class="col-sm-4 control-label" for="ville">Ville</label>
           <div class="col-sm-5">
-            <input type="text" name="ville"  class="form-control" value="" required>
+            <input type="text" name="ville"  class="form-control" value="" onblur="verifVille(this)" required>
           </div>
         </div>
 
         <div class="form-group">
           <label  class="col-sm-4 control-label" for="codePostal">Code postal</label>
           <div class="col-sm-5">
-            <input type="text" name="codePostal"  class="form-control" value="" required>
+            <input type="text" name="codePostal"  class="form-control" value="" onblur="verifCP(this)"required>
           </div>
         </div>
 
         <div class="form-group">
           <label  class="col-sm-4 control-label" for="email">E-mail</label>
           <div class="col-sm-5">
-            <input type="text" name="email"  class="form-control" value="" required>
+            <input type="text" name="email"  class="form-control" value="" onblur="verifMail(this)" required>
           </div>
         </div>
 
         <div class="form-group">
-          <label  class="col-sm-4 control-label" for="anneeNaissance">Année de naissance</label>
+          <label  class="col-sm-4 control-label" for="dateNaissance">Date de naissance</label>
           <div class="col-sm-5">
-            <input type="text" name="anneeNaissance"  class="form-control" value="" required>
+            <input type="text" name="dateNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)" required>
           </div>
         </div>
       </fieldset>
