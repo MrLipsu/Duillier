@@ -165,16 +165,16 @@
         </div>
 
         <div class="form-group">
-          <label  class="col-sm-4 control-label" for="nbEssai">Nombre d'essai</label>
+          <label  class="col-sm-4 control-label" for="numberNbEssai">Nombre d'essai</label>
           <div class="col-sm-5">
-            <input type="number" step="1" value="0" min="0" max="5" for="nbEssai">
+            <input type="number" step="1" value="0" min="0" max="5" id="numberNbEssai" name="numberNbEssai">
           </div>
         </div>
 
         <div class="form-group">
           <label  class="col-sm-4 control-label" for="repas">Nombre de repas</label>
           <div class="col-sm-5">
-            <input type="number" step="1" value="0" min="0" max="9" for="repas">
+            <input type="number" step="1" value="0" min="0" max="9" id="numberNbRepas" name="numberNbRepas">
           </div>
         </div>
       </fieldset>
@@ -215,7 +215,7 @@
         <div class="form-group">
           <label for="rangeur" class="col-sm-4 control-label">Nombre de rangeurs</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo "3"; ?></p>
+            <p class="form-control-static" id="nbEssai"><?php echo "3"; ?></p>
           </div>
         </div>
 
