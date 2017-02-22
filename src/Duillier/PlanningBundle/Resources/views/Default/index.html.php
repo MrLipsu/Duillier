@@ -1,5 +1,7 @@
 <?php
+
 $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+
 ?>
 
 <!DOCTYPE html>
@@ -72,22 +74,32 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
       <tbody>
         <?php
         //la colonne des horaires
-        $reponse = $bdd->query('SELECT heure FROM Horaire WHERE date=\''.$jour.'\'');
+        $reponse = $bdd->query('SELECT * FROM Horaire WHERE date=\''.$jour.'\'');
         while ($donnees = $reponse->fetch()){
           echo '<tr>';
           echo '<th>'.$donnees['heure'].'</th>';
           //les boutons s'inscrire dans chaque colonne
           for($i=1;$i<=6;$i++){
-            ?>
-            <td>
-            <form action="signIn/inscription" method="post">
-              <input type="submit" class="btn btn-success" value="S'inscrire"></input>
-              <input type="hidden" name="jour" value='<?php echo $jour ?>'>
-              <input type="hidden" name="poste" value='<?php echo $i ?>'>
-              <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
-            </form>
-            </td>
-            <?php
+            $query = $bdd->query('SELECT * FROM occupe WHERE idHoraire = '.$donnees['idHoraire'].' And idPoste ='.$i);
+            $data = $query->fetch();
+            //var_dump($data);
+            if(empty($data)){
+              ?>
+              <td>
+              <form action="signIn/inscription" method="post">
+                <input type="submit" class="btn btn-success" value="S'inscrire"></input>
+                <input type="hidden" name="jour" value='<?php echo $jour ?>'>
+                <input type="hidden" name="poste" value='<?php echo $i ?>'>
+                <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
+              </form>
+              </td>
+              <?php
+            }else{
+              $query = $bdd->query('select * from tireur t join participation p on t.idLicence = p.idLicence join occupe o on p.idLivret = o.numLivret where o.numLivret = '.$data['numLivret']);
+              $data = $query->fetch();
+              echo '<td>'.$data['nomTireur'].'<br>'.$data['prenomTireur'].'</td>';
+            }
+
           }
           echo '</tr>';
         }

@@ -105,22 +105,26 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // duillier_sign_in_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'duillier_sign_in_homepage');
-            }
-
-            return array (  '_controller' => 'Duillier\\SignInBundle\\Controller\\DefaultController::indexAction',  '_route' => 'duillier_sign_in_homepage',);
+        // duillier_planning_homepage
+        if ($pathinfo === '/planning') {
+            return array (  '_controller' => 'Duillier\\PlanningBundle\\Controller\\DefaultController::indexAction',  '_route' => 'duillier_planning_homepage',);
         }
 
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+        if (0 === strpos($pathinfo, '/signIn')) {
+            // duillier_sign_in_homepage
+            if (rtrim($pathinfo, '/') === '/signIn') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'duillier_sign_in_homepage');
+                }
+
+                return array (  '_controller' => 'Duillier\\SignInBundle\\Controller\\DefaultController::indexAction',  '_route' => 'duillier_sign_in_homepage',);
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+            // duillier_sign_in_formulaire
+            if ($pathinfo === '/signIn/inscription') {
+                return array (  '_controller' => 'Duillier\\SignInBundle\\Controller\\InscriptionController::indexAction',  '_route' => 'duillier_sign_in_formulaire',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
