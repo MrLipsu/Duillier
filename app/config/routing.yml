@@ -1,3 +1,7 @@
+duillier_admin:
+    resource: "@DuillierAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 duillier_planning:
     resource: "@DuillierPlanningBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,7 +9,3 @@ duillier_planning:
 duillier_sign_in:
     resource: "@DuillierSignInBundle/Resources/config/routing.yml"
     prefix:   /signIn
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
