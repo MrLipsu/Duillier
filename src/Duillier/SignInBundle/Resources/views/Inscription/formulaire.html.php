@@ -21,76 +21,79 @@
     <div class="col-sm-12 divFormulaire " >
       <h1 class="page-header text-center ">Formulaire d'inscription</h1>
     </div>
+
+
+      <form class="form-horizontal formSignInBundle" action="../planning" method="post" onsubmit="return verifForm(this)">
+
       <div class="col-sm-5 divFormulaire " >
+        <div class="startPage">
+          <fieldset class="coordonnees">
+            <legend>Vos coordonnées</legend>
+            <div class="form-group">
+              <label  class="col-sm-4 control-label"for="nom">Nom</label>
 
-      <form class="form-horizontal" action="../planning" method="post" onsubmit="return verifForm(this)">
+              <div class="col-sm-7">
+                <input type="text" id="nom" name="nom" class=" form-control " onblur="verifNom(this)" value="" required>
 
-      <fieldset class="coordonnees">
-        <legend>Vos coordonnées</legend>
-        <div class="form-group">
-          <label  class="col-sm-4 control-label"for="nom">Nom</label>
+              </div>
+            </div>
 
-          <div class="col-sm-7">
-            <input type="text" name="nom" class=" form-control " onblur="verifNom(this)" value="" required>
-
-          </div>
+            <div class="form-group">
+              <label   class="col-sm-4 control-label" for="prenom">Prénom</label>
+              <div class="col-sm-7">
+                <input type="text" id="prenom" name="prenom"  class="form-control" value="" onblur="verifNom(this)" required>
+              </div>
+              <input type="button" id="buttonVisible" name="buttonVisible" class="btn btn-success btn-s" value="Valider">
+            </div>
         </div>
-
-        <div class="form-group">
-          <label   class="col-sm-4 control-label" for="prenom">Prénom</label>
-          <div class="col-sm-7">
-            <input type="text" name="prenom"  class="form-control" value="" onblur="verifNom(this)" required>
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="idLicence">Numéro de licence</label>
+            <div class="col-sm-7">
+              <input type="text" id="idLicence" name="idLicence"  class="form-control" onblur="verifLicence(this)" value="" required>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label  class="col-sm-4 control-label" for="idLicence">Numéro de licence</label>
-          <div class="col-sm-7">
-            <input type="text" name="idLicence"  class="form-control" onblur="verifLicence(this)" value="" required>
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="adresse">Adresse</label>
+            <div class="col-sm-7">
+              <input type="text" id='adresse' name="adresse"  class="form-control" value="" onblur="verifAdresse(this)" required>
+            </div>
           </div>
-        </div>
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="ville">Ville</label>
+            <div class="col-sm-7">
+              <input type="text" id='ville' name="ville"  class="form-control" value="" onblur="verifVille(this)" required>
 
-        <div class="form-group">
-          <label  class="col-sm-4 control-label" for="adresse">Adresse</label>
-          <div class="col-sm-7">
-            <input type="text" name="prenom"  class="form-control" value="" onblur="verifAdresse(this)" required>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label  class="col-sm-4 control-label" for="ville">Ville</label>
-          <div class="col-sm-7">
-            <input type="text" name="ville"  class="form-control" value="" onblur="verifVille(this)" required>
 
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="codePostal">Code postal</label>
+
+            <div class="col-sm-7">
+              <input type="text" id='codePostal' name="codePostal"  class="form-control" value="" onblur="verifCP(this)" required>
+
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label  class="col-sm-4 control-label" for="codePostal">Code postal</label>
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="email">E-mail</label>
 
-          <div class="col-sm-7">
-            <input type="text" name="codePostal"  class="form-control" value="" onblur="verifCP(this)" required>
+            <div class="col-sm-7">
+              <input type="text" id='email' name="email"  class="form-control" value="" onblur="verifMail(this)" required>
 
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label  class="col-sm-4 control-label" for="email">E-mail</label>
+          <div class="form-group">
 
-          <div class="col-sm-7">
-            <input type="text" name="email"  class="form-control" value="" onblur="verifMail(this)" required>
+            <label  class="col-sm-4 control-label" for="anneeNaissance">Année de naissance</label>
+            <div class="col-sm-7">
+              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
 
+            </div>
           </div>
-        </div>
-
-        <div class="form-group">
-
-          <label  class="col-sm-4 control-label" for="anneeNaissance">Année de naissance</label>
-          <div class="col-sm-7">
-            <input type="text" name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
-
-          </div>
-        </div>
-      </fieldset>
+        </fieldset>
     </div>
 
 
