@@ -1,7 +1,55 @@
 <?php
+//connexion a la bdd
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+//insert du tireur
+  if(isset($_POST['valider'])){
 
+
+
+    $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['nbEssai'].'\', \''.$_POST['repas'].'\', \''.$_POST['prix'].'\')');
+
+    $reponse = $bdd->query('SELECT idLivret FROM Participation WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
+    $donnees1 = $reponse->fetch();
+
+    if($_POST['doleGroupe']==1){
+      $bdd->exec('INSERT INTO SeCompose(idTir, idLivret) VALUES(1, \''.$donnees1['idLivret'].'\')');
+    }
+
+    if($_POST['duillier']==1){
+      $bdd->exec('INSERT INTO SeCompose(idTir, idLivret) VALUES(2, \''.$donnees1['idLivret'].'\')');
+    }
+
+    if($_POST['montBlanc']==1){
+      $bdd->exec('INSERT INTO SeCompose(idTir, idLivret) VALUES(3, \''.$donnees1['idLivret'].'\')');
+    }
+
+    if($_POST['perceNeige']==1){
+      $bdd->exec('INSERT INTO SeCompose(idTir, idLivret) VALUES(4, \''.$donnees1['idLivret'].'\')');
+    }
+
+    $reponse = $bdd->query('SELECT idHoraire FROM Horaire WHERE date=\'' . $_POST['jour'] . '\' AND heure=\'' . $_POST['heure'] . '\'');
+    $donnees = $reponse->fetch();
+    $horaire = $donnees['idHoraire'];
+
+    for($i=0; $i<$_POST['rangeur']; $i++){
+      $bdd->exec('INSERT INTO Occupe(idPoste, date, idHoraire, numLivret) VALUES(\''.$_POST['poste'].'\', \''.$_POST['jour'].'\', \''.$horaire++.'\', \''.$donnees1['idLivret'].'\')');
+    }
+
+    $reponse = $bdd->query('SELECT idLicence FROM Tireur WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
+    $donnees = $reponse->fetch();
+
+    if($_POST['idLicence']==$donnees['idLicence']){
+      $bdd->exec('UPDATE Tireur SET idClub=\''.$_POST['club'].'\', nomTireur=\''.$_POST['nom'].'\', prenomTireur=\''.$_POST['prenom'].'\', anneeNaissance=\''.$_POST['dateNaissance'].'\',
+      estGaucher=\''.$_POST['estGaucher'].'\', adresse=\''.$_POST['adresse'].'\', codePostalTireur=\''.$_POST['codePostal'].'\',  ville=\''.$_POST['ville'].'\',
+      commentaire=\''.$_POST['commentaire'].'\', mail=\''.$_POST['email'].'\' WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
+    }else{
+      $bdd->exec('INSERT INTO Tireur(idLicence, idClub, nomTireur, prenomTireur, anneeNaissance, estGaucher, adresse, codePostalTireur, ville, commentaire, mail)
+      VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['club'].'\', \''.$_POST['nom'].'\', \''.$_POST['prenom'].'\', \''.$_POST['dateNaissance'].'\', \''.$_POST['estGaucher'].'\',
+      \''.$_POST['adresse'].'\', \''.$_POST['codePostal'].'\', \''.$_POST['ville'].'\', \''.$_POST['commentaire'].'\', \''.$_POST['email'].'\')');
+    }
+
+  }
 ?>
 
 <!DOCTYPE html>
