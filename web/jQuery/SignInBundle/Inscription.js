@@ -5,10 +5,41 @@ $(document).ready(function() {
   $("#numberNbEssai").click(function() {
     console.log("clique sur le nbEssai");
 
-    
+
+  });
+
+  $(".startPage").css('visibility', 'visible');
+
+  $("#buttonVisible").click(function(){
+    $("#buttonVisible").remove();
+    $(".formSignInBundle").css('visibility', 'visible');
+
+    $.post(
+        '../../jQuery/SignInBundle/tireur.php',
+        {
+          nom : $("#nom").val(),
+          prenom :$("#prenom").val()
+        },
+
+        function(datas){
+          $.each(datas, function(i, data){
+            console.log("donnée : " + data.nomTireur);
+            $("#idLicence").val(data.idLicence);
+            $("#adresse").val(data.adresse);
+            $("#ville").val(data.ville);
+            $("#codePostal").val(data.codePostalTireur);
+            $("#anneeNaissance").val(data.anneNaissance);
+
+          });
+
+        },
+        'json'
+    );
+
   });
 
 });
+
 
 function surligne(champ, erreur)
 {
