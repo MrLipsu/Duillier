@@ -7,7 +7,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 
 
 
-    $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['nbEssai'].'\', \''.$_POST['repas'].'\', \''.$_POST['prix'].'\')');
+    $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['numberNbEssai'].'\', \''.$_POST['numberNbRepas'].'\', \''.$_POST['prix'].'\')');
 
     $reponse = $bdd->query('SELECT idLivret FROM Participation WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
     $donnees1 = $reponse->fetch();
@@ -40,12 +40,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
     $donnees = $reponse->fetch();
 
     if($_POST['idLicence']==$donnees['idLicence']){
-      $bdd->exec('UPDATE Tireur SET idClub=\''.$_POST['club'].'\', nomTireur=\''.$_POST['nom'].'\', prenomTireur=\''.$_POST['prenom'].'\', anneeNaissance=\''.$_POST['dateNaissance'].'\',
+      $bdd->exec('UPDATE Tireur SET idClub=\''.$_POST['club'].'\', nomTireur=\''.$_POST['nom'].'\', prenomTireur=\''.$_POST['prenom'].'\', anneeNaissance=\''.$_POST['anneeNaissance'].'\',
       estGaucher=\''.$_POST['estGaucher'].'\', adresse=\''.$_POST['adresse'].'\', codePostalTireur=\''.$_POST['codePostal'].'\',  ville=\''.$_POST['ville'].'\',
       commentaire=\''.$_POST['commentaire'].'\', mail=\''.$_POST['email'].'\' WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
     }else{
       $bdd->exec('INSERT INTO Tireur(idLicence, idClub, nomTireur, prenomTireur, anneeNaissance, estGaucher, adresse, codePostalTireur, ville, commentaire, mail)
-      VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['club'].'\', \''.$_POST['nom'].'\', \''.$_POST['prenom'].'\', \''.$_POST['dateNaissance'].'\', \''.$_POST['estGaucher'].'\',
+      VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['club'].'\', \''.$_POST['nom'].'\', \''.$_POST['prenom'].'\', \''.$_POST['anneeNaissance'].'\', \''.$_POST['estGaucher'].'\',
       \''.$_POST['adresse'].'\', \''.$_POST['codePostal'].'\', \''.$_POST['ville'].'\', \''.$_POST['commentaire'].'\', \''.$_POST['email'].'\')');
     }
 

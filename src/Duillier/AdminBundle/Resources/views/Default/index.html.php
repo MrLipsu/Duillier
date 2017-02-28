@@ -9,9 +9,9 @@
     <h2>Bienvenue dans la partie admindistration du Perce-Neige</h2>
 
     <a href="#" class="btn btn-primary">Créer un nouveau concours</a>
-    <a href="#" class="btn btn-primary">Ajouter un nouveau club</a>
-    <a href="#" class="btn btn-primary">Ajouter un nouvel administrateur</a>
-    <a href="#" class="btn btn-primary">Consulter les rangeurs</a>
+    <a href="#" class="btn btn-primary">Gérer les clubs</a>
+    <a href="#" class="btn btn-primary">Gérer les administrateurs</a>
+    <a href="#" class="btn btn-primary">Gérer les rangeurs</a>
 
 
   </body>
