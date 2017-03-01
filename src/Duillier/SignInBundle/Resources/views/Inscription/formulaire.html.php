@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <title>Inscription</title>
   <!-- Le lien au fichier style.css ne marche pas -->
-  <link rel="stylesheet" href="../../css/SignInBundle/style.css">
+  <!--<link rel="stylesheet" href="../../css/SignInBundle/style.css">-->
   <link rel="stylesheet" href="../../css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   <script src="../../jQuery/jQuery.js"></script>
@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<?php include'header.php';?>
   <section>
 
     <div class="col-sm-12 divFormulaire " >
