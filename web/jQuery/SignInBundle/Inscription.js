@@ -23,7 +23,7 @@ $(document).ready(function() {
 
         function(datas){
           $.each(datas, function(i, data){
-            console.log("donnée : " + data.nomTireur);
+            console.log("donnée : " + data.anneeNaissance);
             $("#idLicence").val(data.idLicence);
             $("#adresse").val(data.adresse);
             $("#ville").val(data.ville);
@@ -138,6 +138,7 @@ function verifMail(champ)
 
 function verifNaissance(champ)
 {
+
    var regex = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
    if(!regex.test(champ.value))
    {
@@ -154,6 +155,7 @@ function verifNaissance(champ)
 
 function verifForm(f)
 {
+
    var nomOk = verifNom(f.nom);
    var prenomOk = verifNom(f.prenom);
    var licenceOk = verifLicence(f.idLicence);
@@ -161,7 +163,7 @@ function verifForm(f)
    var villeOk = verifVille(f.ville);
    var CPOk = verifCP(f.codePostal);
    var mailOk = verifMail(f.email);
-   var naissanceOk = verifNaissance(f.dateNaissance);
+   var naissanceOk = verifNaissance(f.anneeNaissance);
 
    if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk)
       return true;
