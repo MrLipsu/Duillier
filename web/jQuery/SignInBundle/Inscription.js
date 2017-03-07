@@ -6,6 +6,7 @@ $(document).ready(function() {
   majRecapNombreDeCoups();
   majPrix();
 
+
   $("#nbEssais").change(function() {
     majRecapNombreDeCoups();
     majPrix();
@@ -23,7 +24,11 @@ $(document).ready(function() {
     }
   });
 
+  init();
+
+
 });
+
 
 function creationDesNotif(){
 
@@ -101,6 +106,63 @@ function majNombreDeRangeur(){
   }
   $("#nombreDeRangeurs").html(nombreDeRangeurs);
   $("#nombreDeRangeurs").attr("value",nombreDeRangeurs);
+}
+
+
+function init()
+{
+  $(".startPage").css('visibility', 'visible');
+
+  $("#buttonVisible").click(function(){
+    $("#buttonVisible").remove();
+    $(".formSignInBundle").css('visibility', 'visible');
+
+    $.post(
+        '../../jQuery/SignInBundle/tireur.php',
+        {
+          nom : $("#nom").val(),
+          prenom :$("#prenom").val()
+        },
+
+        function(datas){
+          $.each(datas, function(i, data){
+            console.log("mail : " + data.mail);
+            $("#idLicence").val(data.idLicence);
+            $("#adresse").val(data.adresse);
+            $("#ville").val(data.ville);
+            $("#codePostal").val(data.codePostalTireur);
+            $("#email").val(data.mail);
+            $("#anneeNaissance").val(data.anneeNaissance);
+            //$("#email").val(data.anneeNaissance);
+            //obligé de passer par une fonction en js natif(ne sais pas pourquoi Jquery n'y arrivais pas)
+            setSelectValue("club",data.idClub);
+
+          });
+
+        },
+        'json'
+    );
+
+  });
+
+}
+
+function setSelectValue(selectId, value)
+{
+	/*Récupération du select*/
+	var elmt = document.getElementById(selectId);
+	/*On parcourt les options du select*/
+	for (var i = 0; i < elmt.options.length; i++)
+	{
+		/*Si l'élément à la bonne valeur on le sélectionne*/
+		if(elmt.options[i].value == value)
+		{
+			elmt.selectedIndex = i;
+			return true;
+		}
+	}
+	/*On a pas trouvé la valeur on retourne faux*/
+	return false;
 }
 
 
@@ -201,6 +263,7 @@ function verifMail(champ)
 
 function verifNaissance(champ)
 {
+
    var regex = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
    if(!regex.test(champ.value))
    {
@@ -217,6 +280,7 @@ function verifNaissance(champ)
 
 function verifForm(f)
 {
+
    var nomOk = verifNom(f.nom);
    var prenomOk = verifNom(f.prenom);
    var licenceOk = verifLicence(f.idLicence);
@@ -224,7 +288,7 @@ function verifForm(f)
    var villeOk = verifVille(f.ville);
    var CPOk = verifCP(f.codePostal);
    var mailOk = verifMail(f.email);
-   var naissanceOk = verifNaissance(f.dateNaissance);
+   var naissanceOk = verifNaissance(f.anneeNaissance);
 
    if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk)
       return true;
