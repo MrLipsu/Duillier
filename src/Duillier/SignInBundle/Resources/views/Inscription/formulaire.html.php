@@ -87,7 +87,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 
           <div class="form-group">
 
-            <label  class="col-sm-4 control-label" for="anneeNaissance">Année de naissance</label>
+            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
             <div class="col-sm-7">
               <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
 
@@ -142,6 +142,13 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             </div>
           </div>
 
+          <div class="form-group">
+            <label  class="col-sm-2 col-md-offset-1 control-label" for="nbEssai">Nombre de passes d'essais (Passe de 5 coups)</label>
+            <div class="col-sm-5">
+              <input type="number" step="1" value="0" min="0" max="5" id="numberNbEssai" name="numberNbEssai">
+            </div>
+          </div>
+
 
           <div class="form-group">
             <label  class="col-md-2 col-md-offset-1 control-label" for="club">Club</label>
@@ -169,13 +176,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             </div>
           </div>
 
-          <div class="form-group">
-
-            <label  class="col-sm-2 col-md-offset-1 control-label" for="nbEssai">Nombre d'essai</label>
-            <div class="col-sm-5">
-              <input type="number" step="1" value="0" min="0" max="5" id="numberNbEssai" name="numberNbEssai">
-            </div>
-          </div>
 
           <div class="form-group">
 
