@@ -12,6 +12,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
   <link rel="stylesheet" href="../../css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   <script src="../../jQuery/jQuery.js"></script>
+  <script src="../../jQuery/notiModal.min.js" type="text/javascript"></script>
   <script src="../../jQuery/SignInBundle/Inscription.js"></script>
 
 </head>
@@ -108,47 +109,49 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
           </div>
 
           <!-- Les tirs -->
-
-          <div class="form-group">
-            <label class="col-md-2 col-md-offset-1 control-label" for="doleGroupe">Dôle groupe </label>
-            <div>
-              <input type="radio" name="doleGroupe" id="doleGroupe" value="1" checked> Oui
-              <input type="radio" name="doleGroupe" id="doleGroupe" value="0"> Non
+          <div class="form-group" id="divTirs">
+            <div class="form-group">
+              <label class="col-md-2 col-md-offset-1 control-label" for="doleGroupe">Dôle groupe </label>
+              <div>
+                <input type="radio" name="doleGroupe" id="doleGroupe" value="1" checked> Oui
+                <input type="radio" name="doleGroupe" id="doleGroupe" value="0"> Non
+              </div>
             </div>
-          </div>
 
 
-          <div class="form-group">
-            <label class="col-md-2 col-md-offset-1 control-label" for="duillier">Duillier </label>
-            <div>
-              <input type="radio" name="duillier" id="duillier" value="1" checked> Oui
-              <input type="radio" name="duillier" id="duillier" value="0"> Non
+            <div class="form-group">
+              <label class="col-md-2 col-md-offset-1 control-label" for="duillier">Duillier </label>
+              <div>
+                <input type="radio" name="duillier" id="duillier" value="1" checked> Oui
+                <input type="radio" name="duillier" id="duillier" value="0"> Non
+              </div>
             </div>
-          </div>
 
 
-          <div class="form-group">
-            <label class="col-md-2 col-md-offset-1 control-label" for="montBlanc">Mont-blanc </label>
-            <div>
-              <input type="radio" name="montBlanc" id="montBlanc" value="1" checked> Oui
-              <input type="radio" name="montBlanc" id="montBlanc" value="0"> Non
+            <div class="form-group">
+              <label class="col-md-2 col-md-offset-1 control-label" for="montBlanc">Mont-blanc </label>
+              <div>
+                <input type="radio" name="montBlanc" id="montBlanc" value="1" checked> Oui
+                <input type="radio" name="montBlanc" id="montBlanc" value="0"> Non
+              </div>
             </div>
-          </div>
 
 
-          <div class="form-group">
-            <label class="col-md-2 col-md-offset-1 control-label" for="perceNeige">Perce-neige </label>
-            <div>
-              <input type="radio" name="perceNeige" id="perceNeige" value="1" checked> Oui
-              <input type="radio" name="perceNeige" id="perceNeige" value="0"> Non
+            <div class="form-group">
+              <label class="col-md-2 col-md-offset-1 control-label" for="perceNeige">Perce-neige </label>
+              <div>
+                <input type="radio" name="perceNeige" id="perceNeige" value="1" checked> Oui
+                <input type="radio" name="perceNeige" id="perceNeige" value="0"> Non
+              </div>
             </div>
           </div>
 
           <div class="form-group">
             <label  class="col-sm-2 col-md-offset-1 control-label" for="nbEssai">Nombre de passes d'essais (Passe de 5 coups)</label>
             <div class="col-sm-5">
-              <input type="number" step="1" value="0" min="0" max="5" id="numberNbEssai" name="numberNbEssai">
+              <input type="number" step="1" value="0" min="0" max="5" id="nbEssais" name="numberNbEssai">
             </div>
+
           </div>
 
 
@@ -178,19 +181,19 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             </div>
           </div>
 
+          
 
           <div class="form-group">
 
             <label  class="col-sm-2 col-md-offset-1 control-label" for="repas">Nombre de repas</label>
             <div class="col-sm-5">
-              <input type="number" step="1" value="0" min="0" max="9" id="numberNbRepas" name="numberNbRepas">
+              <input type="number" step="1" value="0" min="0" max="9" id="nbRepas" name="numberNbRepas">
             </div>
           </div>
         </fieldset>
       </div>
 
       <div class="col-sm-12 divFormulaire">
-
         <fieldset class="recap">
           <legend>Récapitulons</legend>
 
@@ -204,8 +207,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
           <div class="form-group">
             <label for="poste" class="col-sm-4 control-label">Votre poste</label>
             <div class="col-sm-4">
-              <!--  <p class="form-control-static"><?php //echo $_POST['poste']; ?></p> -->
-              <input type="text" value=<?php echo $_POST['poste']; ?> name="poste" readonly="readonly">
+              <input type="text" value=<?php echo $_POST['poste']; ?> name="poste" readonly="readonly" id="poste" value="<?php echo $_POST['poste'];?>">
             </div>
           </div>
 
@@ -216,11 +218,17 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             </div>
           </div>
 
+          <div class="form-group">
+            <label for="coups" class="col-sm-4 control-label">Nombre de coups</label>
+            <div class="col-sm-4">
+              <input type="text" id="recapNombreDecoups" value="35" name="nbCoups" readonly="readonly">
+            </div>
+          </div>
 
           <div class="form-group">
             <label for="rangeur" class="col-sm-4 control-label">Nombre de rangeurs</label>
             <div class="col-sm-4">
-              <input type="text" value="3" name="rangeur" readonly="readonly">
+              <input type="text" value="3" name="rangeur" readonly="readonly" id="nombreDeRangeurs">
             </div>
           </div>
 
@@ -228,18 +236,11 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
           <div class="form-group">
             <label for="prix" class="col-sm-4 control-label">Prix</label>
             <div class="col-sm-3">
-              <input type="text" value="40" name="prix" readonly="readonly">
+              <input type="text" value="40" name="prix" readonly="readonly" id="prix" value="6">
             </div>
           </div>
 
 
-
-          <div class="form-group">
-            <label for="coups" class="col-sm-4 control-label">Nombre de coups</label>
-            <div class="col-sm-4">
-              <input type="text" value="35" name="nbCoups" readonly="readonly">
-            </div>
-          </div>
 
           <div class="col-sm-12">
             <div class="form-group">
@@ -254,6 +255,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             <input type="submit" name="valider" class="btn btn-success btn-s" value="Valider">
             <input type="hidden" name="valider">
             <a href="../planning" class="btn btn-warning">Annuler</a>
+
           </div>
 
         </div>
