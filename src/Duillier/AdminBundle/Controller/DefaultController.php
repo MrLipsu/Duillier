@@ -21,4 +21,15 @@ class DefaultController extends Controller
         {
             return $this->render('DuillierAdminBundle:Default:supprimerAdmin.html.php');
         }
+
+        public function ajouterAdminAction()
+        {
+            return $this->render('DuillierAdminBundle:Default:ajouterAdmin.html.php');
+        }
+        
+        public function ajoutAdminAction()
+        {
+            return $this->render('DuillierAdminBundle:Default:ajoutAdmin.html.php');
+        }
+
 }

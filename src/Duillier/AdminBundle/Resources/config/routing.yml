@@ -9,3 +9,13 @@ duillier_admin_gestionAdmin:
 duillier_admin_supprimerAdmin:
     path:     supprimerAdmin
     defaults: { _controller: DuillierAdminBundle:Default:supprimerAdmin }
+
+
+duillier_admin_ajouterAdmin:
+    path:     ajouterAdmin
+    defaults: { _controller: DuillierAdminBundle:Default:ajouterAdmin }
+
+
+duillier_admin_ajoutAdmin:
+    path:     ajoutAdmin
+    defaults: { _controller: DuillierAdminBundle:Default:ajoutAdmin }
