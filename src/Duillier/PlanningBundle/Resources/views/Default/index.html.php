@@ -6,11 +6,11 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
   if(isset($_POST['valider'])){
 
 
-
     $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['numberNbEssai'].'\', \''.$_POST['numberNbRepas'].'\', \''.$_POST['prix'].'\')');
 
     $reponse = $bdd->query('SELECT idLivret FROM Participation WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
     $donnees1 = $reponse->fetch();
+
 
     if($_POST['doleGroupe']==1){
       $bdd->exec('INSERT INTO SeCompose(idTir, idLivret) VALUES(1, \''.$donnees1['idLivret'].'\')');
