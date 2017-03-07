@@ -1,3 +1,27 @@
 duillier_admin_homepage:
     path:     /
     defaults: { _controller: DuillierAdminBundle:Default:index }
+
+duillier_admin_nouveauConcours:
+    path:     /nouveauConcours
+    defaults: { _controller: DuillierAdminBundle:Default:nouveauConcours }
+
+duillier_admin_gestionClub:
+    path:     /gestionClub
+    defaults: { _controller: DuillierAdminBundle:Default:gestionClub }
+
+duillier_admin_modifierClub:
+    path:     /gestionClub/modifier
+    defaults: { _controller: DuillierAdminBundle:Default:modifierClub }
+
+duillier_admin_supprimerClub:
+    path:     /gestionClub/supprimer
+    defaults: { _controller: DuillierAdminBundle:Default:supprimerClub }
+
+duillier_admin_ajouterClub:
+    path:     /gestionClub/ajouter
+    defaults: { _controller: DuillierAdminBundle:Default:ajouterClub }
+
+duillier_admin_gererRepas:
+    path:     /gererRepas
+    defaults: { _controller: DuillierAdminBundle:Default:gererRepas }
