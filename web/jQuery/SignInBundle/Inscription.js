@@ -161,7 +161,7 @@ function verifForm(f)
    var villeOk = verifVille(f.ville);
    var CPOk = verifCP(f.codePostal);
    var mailOk = verifMail(f.email);
-   var naissanceOk = verifNaissance(f.dateNaissance);
+   var naissanceOk = verifNaissance(f.anneeNaissance);
 
    if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk)
       return true;
