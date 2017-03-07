@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
 
@@ -52,7 +52,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
   </select>
 
 
-  <!-- 
+  <!--
   <br>
   <label class="" for="jour">Jour de tir 1</label>
   <input type="date" name="jour">
