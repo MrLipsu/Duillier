@@ -10,7 +10,7 @@
 
     <a href="nouveauConcours" class="btn btn-primary">Créer un nouveau concours</a>
     <a href="gestionClub" class="btn btn-primary">Gérer les clubs</a>
-    <a href="#" class="btn btn-primary">Gérer les administrateurs</a>
+    <a href="gestionAdmin" class="btn btn-primary">Gérer les administrateurs</a>
     <a href="#" class="btn btn-primary">Gérer les rangeurs</a>
     <a href="gererRepas" class="btn btn-primary">Gérer les repas</a>
 

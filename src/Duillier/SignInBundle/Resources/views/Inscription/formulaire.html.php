@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
   <meta charset="utf-8">
   <title>Inscription</title>
   <!-- Le lien au fichier style.css ne marche pas -->
-  <link rel="stylesheet" href="../../css/SignInBundle/style.css">
+  <!--<link rel="stylesheet" href="../../css/SignInBundle/style.css">-->
   <link rel="stylesheet" href="../../css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   <script src="../../jQuery/jQuery.js"></script>
@@ -16,13 +16,14 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 
 </head>
 <body>
+<?php include'header.php';?>
   <section>
 
     <div class="col-sm-12 divFormulaire " >
       <h1 class="page-header text-center ">Formulaire d'inscription</h1>
     </div>
 
-    <form class="form-horizontal formSignInBundle" action="../planning" method="post" onsubmit="return verifForm(this)">
+    <form class="form-horizontal formSignInBundle" action="../planning" method="post" onSubmit="return verifForm(this)">
 
       <div class="col-sm-5 divFormulaire " >
         <div class="startPage">
@@ -81,7 +82,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             <label  class="col-sm-4 control-label" for="email">E-mail</label>
             <div class="col-sm-7">
               <input type="text" id='email' name="email"  class="form-control" value="" onblur="verifMail(this)" required>
-
             </div>
           </div>
 
@@ -101,8 +101,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <legend>Votre tir</legend>
           <div class="form-group">
             <label class="col-md-2 col-md-offset-1 control-label" for="estGaucher">Gaucher </label>
-              <input type="radio" name="estGaucher" id="estGaucher" value="1"> Oui
-              <input type="radio" name="estGaucher" id="estGaucher" value="0" checked> Non
+            <input type="radio" name="estGaucher" id="estGaucher" value="1"> Oui
+            <input type="radio" name="estGaucher" id="estGaucher" value="0" checked> Non
           </div>
 
           <!-- Les tirs -->
