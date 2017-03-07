@@ -8,6 +8,13 @@ $(document).ready(function() {
 
   });
 
+  init();
+
+
+});
+
+function init()
+{
   $(".startPage").css('visibility', 'visible');
 
   $("#buttonVisible").click(function(){
@@ -23,12 +30,16 @@ $(document).ready(function() {
 
         function(datas){
           $.each(datas, function(i, data){
-            console.log("donnée : " + data.anneeNaissance);
+            console.log("mail : " + data.mail);
             $("#idLicence").val(data.idLicence);
             $("#adresse").val(data.adresse);
             $("#ville").val(data.ville);
             $("#codePostal").val(data.codePostalTireur);
-            $("#anneeNaissance").val(data.anneNaissance);
+            $("#email").val(data.mail);
+            $("#anneeNaissance").val(data.anneeNaissance);
+            //$("#email").val(data.anneeNaissance);
+            //obligé de passer par une fonction en js natif(ne sais pas pourquoi Jquery n'y arrivais pas)
+            setSelectValue("club",data.idClub);
 
           });
 
@@ -38,8 +49,25 @@ $(document).ready(function() {
 
   });
 
-});
+}
 
+function setSelectValue(selectId, value)
+{
+	/*Récupération du select*/
+	var elmt = document.getElementById(selectId);
+	/*On parcourt les options du select*/
+	for (var i = 0; i < elmt.options.length; i++)
+	{
+		/*Si l'élément à la bonne valeur on le sélectionne*/
+		if(elmt.options[i].value == value)
+		{
+			elmt.selectedIndex = i;
+			return true;
+		}
+	}
+	/*On a pas trouvé la valeur on retourne faux*/
+	return false;
+}
 
 function surligne(champ, erreur)
 {
