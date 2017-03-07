@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../../css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   <script src="../../jQuery/jQuery.js"></script>
+  <script src="../../jQuery/notiModal.min.js" type="text/javascript"></script>
   <script src="../../jQuery/SignInBundle/Inscription.js"></script>
 
 </head>
@@ -106,41 +107,45 @@
         </div>
 
         <!-- Les tirs -->
+        <div class="form-group" id="divTirs">
 
-        <div class="form-group">
-          <label class="col-md-2 col-md-offset-1 control-label" for="doleGroupe">Dôle groupe </label>
-         <div >
-            <input type="radio" name="doleGroupe" id="doleGroupe" value="1" checked> Oui
-            <input type="radio" name="doleGroupe" id="doleGroupe" value="0"> Non
-          </div>
+            <div class="form-group">
+              <label class="col-md-2 col-md-offset-1 control-label" for="doleGroupe">Dôle groupe </label>
+             <div >
+                <input type="radio" name="doleGroupe" id="doleGroupe" value="1" checked> Oui
+                <input type="radio" name="doleGroupe" id="doleGroupe" value="0"> Non
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-2  col-md-offset-1 control-label" for="duillier">Duillier </label>
+              <div>
+                <input type="radio" name="duillier" id="duillier" value="1" checked> Oui
+                <input type="radio" name="duillier" id="duillier" value="0"> Non
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-2  col-md-offset-1 control-label"for="montBlanc">Mont-blanc </label>
+              <div >
+                <input type="radio" name="montBlanc" id="montBlanc" value="1" checked> Oui
+                <input type="radio" name="montBlanc" id="montBlanc" value="0"> Non
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-2  col-md-offset-1 control-label" for="perceNeige">Perce-neige </label>
+              <div>
+                <input type="radio" name="perceNeige" id="perceNeige" value="1" checked> Oui
+                <input type="radio" name="perceNeige" id="perceNeige" value="0"> Non
+              </div>
+            </div>
+
         </div>
 
-
-        <div class="form-group">
-          <label class="col-md-2  col-md-offset-1 control-label" for="duillier">Duillier </label>
-          <div>
-            <input type="radio" name="duillier" id="duillier" value="1" checked> Oui
-            <input type="radio" name="duillier" id="duillier" value="0"> Non
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <label class="col-md-2  col-md-offset-1 control-label"for="montBlanc">Mont-blanc </label>
-          <div >
-            <input type="radio" name="montBlanc" id="montBlanc" value="1" checked> Oui
-            <input type="radio" name="montBlanc" id="montBlanc" value="0"> Non
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <label class="col-md-2  col-md-offset-1 control-label" for="perceNeige">Perce-neige </label>
-          <div>
-            <input type="radio" name="perceNeige" id="perceNeige" value="1" checked> Oui
-            <input type="radio" name="perceNeige" id="perceNeige" value="0"> Non
-          </div>
-        </div>
 
 
         <div class="form-group">
@@ -180,16 +185,16 @@
 
         <div class="form-group">
 
-          <label  class="col-sm-2 col-md-offset-1 control-label" for="nbEssai">Nombre d'essai</label>
+          <label  class="col-sm-2 col-md-offset-1 control-label" for="nbEssais">Nombre d'essai</label>
           <div class="col-sm-5">
-            <input type="number" step="1" value="0" min="0" max="5" id="numberNbEssai" name="numberNbEssai">
+            <input type="number" step="1" value="0" min="0" max="5" id="nbEssais" name="numberNbEssai">
           </div>
         </div>
 
         <div class="form-group">
-          <label  class="col-sm-2 col-md-offset-1 control-label" for="repas">Nombre de repas</label>
+          <label  class="col-sm-2 col-md-offset-1 control-label" for="nbRepas">Nombre de repas</label>
           <div class="col-sm-5">
-            <input type="number" step="1" value="0" min="0" max="9" id="numberNbRepas" name="numberNbRepas">
+            <input type="number" step="1" value="0" min="0" max="9" id="nbRepas" name="nbRepas">
           </div>
         </div>
       </fieldset></br>
@@ -209,7 +214,7 @@
         <div class="form-group">
           <label for="poste" class="col-sm-2  control-label">Votre poste</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo $_POST['poste']; ?></p>
+            <p class="form-control-static" id="poste" value="<?php echo $_POST['poste'];?>"><?php echo $_POST['poste']; ?></p>
           </div>
         </div>
 
@@ -227,23 +232,23 @@
 
 
         <div class="form-group">
-          <label for="rangeur" class="col-sm-2 control-label">Nombre de rangeurs</label>
+          <label for="nombreDeRangeurs" class="col-sm-2 control-label">Nombre de rangeurs</label>
           <div class="col-sm-4">
-            <p class="form-control-static" id="nbEssai"><?php echo "3"; ?></p>
+            <p class="form-control-static" id="nombreDeRangeurs"><?php echo "3"; ?></p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="prix" class="col-sm-3 text-right control-label">Prix</label>
           <div class="col-sm-3">
-            <p class="form-control-static"><?php echo "40 CHF"; ?></p>
+            <p class="form-control-static"><span id="prix" value="6">6</span> CHF</p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="coups" class="col-sm-2 control-label">Nombre de coups</label>
           <div class="col-sm-4">
-            <p class="form-control-static"><?php echo "35"; ?></p>
+            <p class="form-control-static" id="recapNombreDecoups" value=31 >31</p>
           </div>
         </div>
         <div class="col-sm-12">
