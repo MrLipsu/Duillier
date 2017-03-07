@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 
 </head>
 <body>
+
 <?php include'header.php';?>
   <section>
 
@@ -86,13 +87,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           </div>
 
           <div class="form-group">
-
             <label  class="col-sm-4 control-label" for="anneeNaissance">Année de naissance</label>
             <div class="col-sm-7">
               <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
-
             </div>
           </div>
+
         </fieldset>
       </div>
 
@@ -146,13 +146,13 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="form-group">
             <label  class="col-md-2 col-md-offset-1 control-label" for="club">Club</label>
             <div>
-              <select name="club">  
+              <select id="club" name="club">  
                 <option value="">Pas de club choisi</option>  
                 <?php
                 $reponse = $bdd->query('SELECT * FROM club');
                 while ($donnees = $reponse->fetch()){
                   ?>
-                  <option value="<?php echo $donnees['idClub']; ?>" name="club"><?php echo $donnees['nom'] ?></option>
+                  <option value="<?php echo $donnees['idClub']; ?>" name="clubOption"><?php echo $donnees['nom'] ?></option>
                   <?php
                 }
                 ?>
