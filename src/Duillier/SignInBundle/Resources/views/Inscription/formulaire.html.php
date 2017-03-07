@@ -181,22 +181,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             </div>
           </div>
 
-          <div class="form-group">
-            <label  class="col-sm-2 col-md-offset-1 control-label" for="groupe">Groupe</label>
-            <div >
-              <select class="" name="listeGroupe">
-                <option value="pasDeGroupe">Pas de groupe choisi</option>
-                <?php
-                $reponse = $bdd->query('SELECT * FROM Groupe WHERE idClub=\'. recuperer le idClub de la liste déroulante en dessus.\'');
-                while ($donnees = $reponse->fetch()){
-                  ?>
-                  <option value="<?php echo $donnees['nomGroupe']; ?>"><?php echo $donnees['nomGroupe'] ?></option>
-                  <?php
-                }
-                ?>
-              </select>
-            </div>
-          </div>
+          
 
           <div class="form-group">
 
