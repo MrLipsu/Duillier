@@ -1,3 +1,11 @@
 duillier_admin_homepage:
     path:     /
     defaults: { _controller: DuillierAdminBundle:Default:index }
+
+duillier_admin_gestionAdmin:
+    path:     gestionAdmin
+    defaults: { _controller: DuillierAdminBundle:Default:gestionAdmin }
+
+duillier_admin_supprimerAdmin:
+    path:     supprimerAdmin
+    defaults: { _controller: DuillierAdminBundle:Default:supprimerAdmin }

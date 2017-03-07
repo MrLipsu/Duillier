@@ -10,4 +10,15 @@ class DefaultController extends Controller
     {
         return $this->render('DuillierAdminBundle:Default:index.html.php');
     }
+
+    public function gestionAdminAction()
+    {
+        return $this->render('DuillierAdminBundle:Default:gestionAdmin.html.php');
+    }
+
+
+        public function supprimerAdminAction()
+        {
+            return $this->render('DuillierAdminBundle:Default:supprimerAdmin.html.php');
+        }
 }
