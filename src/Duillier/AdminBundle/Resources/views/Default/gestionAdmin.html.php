@@ -11,6 +11,8 @@ if(isset($_POST['supprimer'])){
   }
 }
 
+include 'ajoutAdmin.html.php';
+
 $reponse = $bdd->query('SELECT * FROM admin ');
 
 
@@ -25,6 +27,12 @@ $reponse = $bdd->query('SELECT * FROM admin ');
 </head>
 <body>
     <h1 class="page-header text-center">Les administrateurs</h1>
+    <div class="text-center">
+
+    <a type="button" class="btn btn-success" href="ajouterAdmin">ajouter un admin</a>
+    <a type="button" class="btn btn-warning" href="../app_dev.php">Retour</a>
+
+      <div>
 
       <!-- Pour une raison d'esthétique nous avons décidé d'afficher les livres dans un tableau -->
       <table class="table table-striped table-bordered">
@@ -43,7 +51,9 @@ $reponse = $bdd->query('SELECT * FROM admin ');
     <?php
   }
 
+
   ?>
+
 
 
 
