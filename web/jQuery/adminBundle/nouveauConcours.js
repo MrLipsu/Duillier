@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  console.log("JQuery récupéré !");
+  console.log("JQuery récupéré ! loilkjnéln");
 
 
   $("#nbJour").change(function() // lorsqu'un nouveau nbJour est sélectionné
@@ -7,7 +7,7 @@ $(document).ready(function() {
     var nbJour = $("select[name='nbJour'] > option:selected").val();
 
     for (pas = 0; pas < nbJour; pas++) {
-      console.log(nbJour); 
+      console.log(nbJour);
     }
 
   });
