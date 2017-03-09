@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8','root','');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8','root','root');
 $reponse = $bdd->query('SELECT * FROM Admin WHERE login=\''.$_GET['login'].'\'');
 $donnees = $reponse->fetch();
 ?>

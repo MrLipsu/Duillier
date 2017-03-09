@@ -1,6 +1,6 @@
 <?php
 //connexion a la bdd
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 
 if(isset($_POST['supprimer'])){
   ?><div class="alert alert-success" role="alert">Suppression effectuée !</div><?php
