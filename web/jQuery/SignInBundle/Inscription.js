@@ -1,7 +1,12 @@
 $(document).ready(function() {
-  console.log("JQuery récupéré !");
+  console.log("JQuery récupéré ! Yoann ne sait pas faire cela");
+
 
   init();
+
+  creationDesNotif();
+  verifRepas();
+
 
   majRecapNombreDeCoups();
   majPrix();
@@ -10,6 +15,21 @@ $(document).ready(function() {
   $("#nbEssais").change(function() {
     majRecapNombreDeCoups();
     majPrix();
+
+
+  });
+
+  $("#divTirs").change(function(){
+    majRecapNombreDeCoups();
+    majPrix();
+  });
+
+
+  $("#estGaucher").change(function(){
+    if ($("#poste").attr("value") != 2 && $("#poste").attr("value") != 4 && $("#poste").attr("value") != 6) {
+      $.notiModal.get("alerteGaucher").show();
+    }
+
   });
 
   $("#divTirs").change(function(){
@@ -26,6 +46,15 @@ $(document).ready(function() {
 
   creationDesNotif();
 });
+
+
+
+function verifRepas(){
+  if ($("#booleanRepas").val() == 0) {
+    $("#nbRepas").css('visibility', 'hidden');
+    $("#divNbDeRepas").prepend("Il n'y a pas de repas ce jour là");
+  }
+}
 
 
 function creationDesNotif(){

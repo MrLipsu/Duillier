@@ -90,7 +90,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
       $jour=$_POST['jour'];
     }
 
-    $reponse = $bdd->query('SELECT date FROM jour WHERE date=\''.$jour.'\'');
+    $reponse = $bdd->query('SELECT date, repas FROM jour WHERE date=\''.$jour.'\'');
     while ($donnees = $reponse->fetch()){
       //Conversion de la date en français
       $jour_semaine = array(1=>"Lundi", 2=>"Mardi", 3=>"Mercredi", 4=>"Jeudi", 5=>"Vendredi", 6=>"Samedi", 7=>"Dimanche");
@@ -99,6 +99,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
       $timestamp = mktime(0,0,0, date($mois), date($jourN), date($annee));
       $njour = date("N",$timestamp);
       $nmois = date("n",$timestamp);
+      $repas = $donnees['repas'];
       //Affichage du titre
       echo '<h1 class="text-center">'.$jour_semaine[$njour]." ".$jourN." ".$nom_mois[$nmois]." ".$annee.'</h1>';
     }
@@ -137,6 +138,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
                 <input type="hidden" name="jour" value='<?php echo $jour ?>'>
                 <input type="hidden" name="poste" value='<?php echo $i ?>'>
                 <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
+                <input type="hidden" name="repas" value='<?php echo $repas ?>'>
               </form>
               </td>
               <?php
