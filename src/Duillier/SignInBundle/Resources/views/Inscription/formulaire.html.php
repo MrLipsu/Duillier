@@ -1,22 +1,12 @@
+<?php $view->extend('base.html.php') ?>
+
+<?php $view['slots']->set('title', 'Inscription') ?>
+
+<?php $view['slots']->start('body') ?>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Inscription</title>
-  <!-- Le lien au fichier style.css ne marche pas -->
-  <!--<link rel="stylesheet" href="../../css/SignInBundle/style.css">-->
-  <link rel="stylesheet" href="../../css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-
-  <script src="../../jQuery/jQuery.js"></script>
-  <script src="../../jQuery/SignInBundle/Inscription.js"></script>
-
-</head>
-<body>
-<?php include'header.php';?>
   <section>
 
     <div class="col-sm-12 divFormulaire " >
@@ -25,7 +15,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
 
     <form class="form-horizontal formSignInBundle" action="../planning" method="post" onSubmit="return verifForm(this)">
 
-      <div class="col-sm-5 divFormulaire " >
+      <div class="col-sm-5 divFormulaire ">
         <div class="startPage">
           <fieldset class="coordonnees">
             <legend>Vos coordonnées</legend>
@@ -262,5 +252,5 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
 
   </div>
 </section>
-</body>
-</html>
+
+<?php $view['slots']->stop() ?>
