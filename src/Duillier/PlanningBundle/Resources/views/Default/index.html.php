@@ -1,6 +1,13 @@
+<!-- app/Resources/views/blog/index.html.php -->
+<?php $view->extend('base.html.php') ?>
+
+<?php $view['slots']->set('title', 'Rangeur') ?>
+
+<?php $view['slots']->start('body') ?>
+
 <?php
 //connexion a la bdd
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 
 //insert du tireur
   if(isset($_POST['valider'])){
@@ -51,15 +58,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
 
   }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Inscription</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-</head>
-<body>
 
   <form action="" method="post">
     <label for="">Jour de tir : </label>
@@ -155,5 +153,5 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
         ?>
       </tbody>
     </table>
-  </body>
-  </html>
+
+  <?php $view['slots']->stop() ?>
