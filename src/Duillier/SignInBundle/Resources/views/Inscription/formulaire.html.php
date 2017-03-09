@@ -181,12 +181,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             </div>
           </div>
 
-          
+
 
           <div class="form-group">
-
-            <label  class="col-sm-2 col-md-offset-1 control-label" for="repas">Nombre de repas</label>
-            <div class="col-sm-5">
+            <input type="hidden" value=<?php echo $_POST['repas']; ?> name="booleanRepas" id="booleanRepas"readonly="readonly">
+            <label  class="col-sm-2 col-md-offset-1 control-label" for="nbRepas">Nombre de repas</label>
+            <div class="col-sm-5" id="divNbDeRepas">
               <input type="number" step="1" value="0" min="0" max="9" id="nbRepas" name="numberNbRepas">
             </div>
           </div>
