@@ -43,3 +43,17 @@ duillier_admin_ajouterAdmin:
 duillier_admin_ajoutAdmin:
     path:     /ajoutAdmin
     defaults: { _controller: DuillierAdminBundle:Default:ajoutAdmin }
+
+
+duillier_admin_connexionAdmin:
+    path:     /connexionAdmin
+    defaults: { _controller: DuillierAdminBundle:Default:connexionAdmin }
+
+
+duillier_admin_verifConnexionAdmin:
+    path:     /verifConnexionAdmin
+    defaults: { _controller: DuillierAdminBundle:Default:verifConnexionAdmin }
+
+duillier_admin_refusConnexion:
+    path:     /refusConnexion
+    defaults: { _controller: DuillierAdminBundle:Default:refusConnexion }

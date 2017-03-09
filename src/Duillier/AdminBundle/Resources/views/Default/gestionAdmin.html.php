@@ -13,6 +13,7 @@ if(isset($_POST['supprimer'])){
 
 include 'ajoutAdmin.html.php';
 
+
 $reponse = $bdd->query('SELECT * FROM admin ');
 
 

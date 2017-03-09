@@ -61,5 +61,19 @@ class DefaultController extends Controller
   {
     return $this->render('DuillierAdminBundle:Default:ajoutAdmin.html.php');
   }
-  
+
+  public function connexionAdminAction()
+  {
+    return $this->render('DuillierAdminBundle:Default:connexionAdmin.html.php');
+  }
+
+    public function verifConnexionAdminAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:verifConnexionAdmin.html.php');
+    }
+
+    public function refusConnexionAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:refusConnexion.html.php');
+    }
 }

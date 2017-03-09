@@ -133,13 +133,15 @@ function init()
 
         function(datas){
           $.each(datas, function(i, data){
-            console.log("mail : " + data.mail);
+            var date = data.anneeNaissance;
+            date = tranformDate(date);
+
             $("#idLicence").val(data.idLicence);
             $("#adresse").val(data.adresse);
             $("#ville").val(data.ville);
             $("#codePostal").val(data.codePostalTireur);
             $("#email").val(data.mail);
-            $("#anneeNaissance").val(data.anneeNaissance);
+            $("#anneeNaissance").val(date);
             //$("#email").val(data.anneeNaissance);
             //obligé de passer par une fonction en js natif(ne sais pas pourquoi Jquery n'y arrivais pas)
             setSelectValue("club",data.idClub);
@@ -170,6 +172,20 @@ function setSelectValue(selectId, value)
 	}
 	/*On a pas trouvé la valeur on retourne faux*/
 	return false;
+}
+
+
+function tranformDate(date){
+  var regex = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+
+  if(!regex.test(date)){
+    var annee = date.substring(0,4);
+    var mois = date.substring(5,7);
+    var jour = date.substring(8,10);
+    date = jour + "/" + mois + "/" + annee;
+  }
+
+  return date;
 }
 
 

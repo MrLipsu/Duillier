@@ -19,7 +19,7 @@
       </div>
       <div class="col-md-2" id="bouton">
         <div class="row">
-          <a href="../blabl " class="btn btn-warning " class="login">Connexion Administrateur</a>
+          <a href="../connexionAdmin" class="btn btn-warning " class="login">Connexion Administrateur</a>
         </div>
         <div class="row">
           <a href="../blabl " class="btn btn-warning " class="login">Connexion Chef de Groupe</a>
