@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  console.log("JQuery récupéré !");
+  console.log("JQuery récupéré ! Yoann ne sait pas faire cela");
 
   creationDesNotif();
+  verifRepas();
 
   majRecapNombreDeCoups();
   majPrix();
@@ -29,6 +30,12 @@ $(document).ready(function() {
 
 });
 
+function verifRepas(){
+  if ($("#booleanRepas").val() == 0) {
+    $("#nbRepas").css('visibility', 'hidden');
+    $("#divNbDeRepas").prepend("Il n'y a pas de repas ce jour là");
+  }
+}
 
 function creationDesNotif(){
 
