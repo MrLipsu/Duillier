@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Inscription</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<?php $view->extend('base.html.php') ?>
 
-  <script src="../../jQuery/jQuery.js"></script>
-  <script src="../../jQuery/SignInBundle/Inscription.js"></script>
+<?php $view['slots']->set('title', 'Rangeur') ?>
 
-</head>
-<body>
+<?php $view['slots']->start('body') ?>
+
+<?php
+//connexion a la bdd
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+?>
     <h1 class="page-header text-center">Ajout administrateur</h1>
-        <form class="form-horizontal " method="post"  action="gestionAdmin"  >
+        <form class="form-horizontal " method="post"  action="gestionAdmin">
           <div class="form-group">
             <label  class="col-sm-4 control-label"for="login">Nom d'utilisateur</label>
 
@@ -37,10 +35,8 @@
           <div class="col-sm-6">
             <input type="submit" name="validerAjoutAdmin" class="btn btn-success btn-s" value="Valider">
             <input type="hidden" name="validerAjoutAdmin">
-            <a href="gestionAdmin" class="btn btn-warning">Annuler</a>
+            <a href="<?php echo $view['router']->path('duillier_admin_gestionAdmin') ?>" class="btn btn-warning">Annuler</a>
           </div>
 
         </form>
-
-
-</body>
+<?php $view['slots']->stop() ?>

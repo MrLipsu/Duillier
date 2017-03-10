@@ -1,23 +1,11 @@
+<?php $view->extend('base.html.php') ?>
+<?php $view['slots']->set('title', 'Rangeur') ?>
+<?php $view['slots']->start('body') ?>
+
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Nouveau concours</title>
-
-  <link href="<?php echo $view['assets']->getUrl('css/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>" rel="stylesheet" />
-  <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
-  <script src="<?php echo $view['assets']->getUrl('jQuery/jQuery.js') ?>"></script>
-  <script src="<?php echo $view['assets']->getUrl('jQuery/AdminBundle/nouveauConcours.js') ?>"></script>
-
-
-</head>
-
-<body>
     <h1 class="page-header text-center ">Création d'un nouveau concours</h1>
 
 
@@ -52,53 +40,51 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
   </select>
 
 
-  <!--
+<div id="jour">
   <br>
   <label class="" for="jour">Jour de tir 1</label>
   <input type="date" name="jour">
   <label for="de">De </label>
   <select name="heureDebut">
-    <?php/*
-      for($i=8; $i<=17; $i++){
-        ?>
-          <option value=<?php $i ?>><?php echo $i ?></option>
-        <?php
-      }
-     ?>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
   </select>
   <label for="hDebut"> h </label>
   <select name="minuteDebut">
-    <?php
-      for($i=0; $i<60; $i+=15){
-        ?>
-          <option value=<?php $i ?>><?php echo $i ?></option>
-        <?php
-      }
-     ?>
+    <option value="0">0</option>
+    <option value="15">15</option>
+    <option value="30">30</option>
+    <option value="45">45</option>
   </select>
   <label for="a"> à </label>
   <select name="heureFin">
-    <?php
-    for($i=8; $i<=17; $i++){
-        ?>
-          <option value=<?php $i ?>><?php echo $i ?></option>
-        <?php
-      }
-     ?>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
   </select>
   <label for="hFin"> h </label>
   <select name="minuteFin">
-    <?php
-    for($i=0; $i<60; $i+=15){
-        ?>
-          <option value=<?php $i ?>><?php echo $i ?></option>
-        <?php
-      }
-     ?>
+    <option value="0">0</option>
+    <option value="15">15</option>
+    <option value="30">30</option>
+    <option value="45">45</option>
   </select>
-*/ ?>
--->
-
+</div>
 
   <div>
     <input type="submit" name="valider" class="btn btn-success btn-s" value="Valider">
@@ -107,6 +93,4 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
   </div>
 
 </form>
-
-</body>
-</html>
+<?php $view['slots']->stop() ?>

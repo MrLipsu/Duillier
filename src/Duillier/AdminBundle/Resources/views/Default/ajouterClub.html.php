@@ -1,20 +1,12 @@
+<?php $view->extend('base.html.php') ?>
+
+<?php $view['slots']->set('title', 'Rangeur') ?>
+
+<?php $view['slots']->start('body') ?>
+
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Nouveau concours</title>
-
-  <link href="<?php echo $view['assets']->getUrl('css/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>" rel="stylesheet" />
-  <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
-</head>
-
-
-<body>
 
   <h1 class="page-header text-center ">Ajout du club</h1>
 
@@ -97,12 +89,11 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-6">
             <input type="submit" class="btn btn-success" value="Ajouter"></input>
-            <a href="../gestionClub" class="btn btn-warning">Annuler</a>
+            <a href="<?php echo $view['router']->path('duillier_admin_gestionClub') ?>" class="btn btn-warning">Annuler</a>
             <!--Il aura néanmoins toujours la possibilité d'annuler cette actions dans ce cas là il sera rediriger sur la page controller.php-->
           </div>
         </div>
         <input type="hidden" name="enregistrerAjout" value="">
       </form>
 
-</body>
-</html>
+  <?php $view['slots']->stop() ?>

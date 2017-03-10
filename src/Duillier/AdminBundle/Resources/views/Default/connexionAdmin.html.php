@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Inscription</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<?php $view->extend('base.html.php') ?>
 
-  <script src="../../jQuery/jQuery.js"></script>
-  <script src="../../jQuery/SignInBundle/Inscription.js"></script>
+<?php $view['slots']->set('title', 'Rangeur') ?>
 
-</head>
-<body>
+<?php $view['slots']->start('body') ?>
+
     <h1 class="page-header text-center">Connexion administrateur</h1>
         <form class="form-horizontal " method="post"  action="verifConnexionAdmin"  >
           <div class="form-group">
@@ -30,11 +24,8 @@
           <div class="col-sm-6">
             <input type="submit" name="connexionAdmin" class="btn btn-success btn-s" value="Connexion">
             <input type="hidden" name="connexionAdmin">
-            <a href="#" class="btn btn-warning">Annuler</a>
+            <a href="<?php echo $view['router']->path('duillier_planning_homepage') ?>" class="btn btn-warning">Annuler</a>
           </div>
 
         </form>
-
-
-
-</body>
+<?php $view['slots']->stop() ?>

@@ -1,3 +1,9 @@
+<?php $view->extend('base.html.php') ?>
+
+<?php $view['slots']->set('title', 'Rangeur') ?>
+
+<?php $view['slots']->start('body') ?>
+
 <?php
 //connexion a la bdd
 $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
@@ -19,19 +25,12 @@ $reponse = $bdd->query('SELECT * FROM admin ');
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Inscription</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-</head>
-<body>
+
     <h1 class="page-header text-center">Les administrateurs</h1>
     <div class="text-center">
 
-    <a type="button" class="btn btn-success" href="ajouterAdmin">ajouter un admin</a>
-    <a type="button" class="btn btn-warning" href="../app_dev.php">Retour</a>
+    <a type="button" class="btn btn-success" href="<?php echo $view['router']->path('duillier_admin_ajouterAdmin') ?>">Ajouter un admin</a>
+    <a type="button" class="btn btn-warning" href="<?php echo $view['router']->path('duillier_admin_homepage') ?>">Retour</a>
 
       <div>
 
@@ -59,6 +58,4 @@ $reponse = $bdd->query('SELECT * FROM admin ');
 
 
 </table>
-
-</body>
-</html>
+<?php $view['slots']->stop() ?>

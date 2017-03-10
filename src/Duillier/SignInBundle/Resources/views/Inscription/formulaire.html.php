@@ -242,7 +242,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="col-sm-6">
             <input type="submit" name="valider" class="btn btn-success btn-s" value="Valider">
             <input type="hidden" name="valider">
-            <a href="../planning" class="btn btn-warning">Annuler</a>
+            <a href="<?php echo $view['router']->path('duillier_planning_homepage') ?>" class="btn btn-warning">Annuler</a>
 
           </div>
 
