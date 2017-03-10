@@ -1,17 +1,12 @@
+<?php $view->extend('base.html.php') ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Connexion refusée</title>
+<?php $view['slots']->set('title', 'Rangeur') ?>
 
-  <link href="<?php echo $view['assets']->getUrl('css/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>" rel="stylesheet" />
-  <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
-</head>
+<?php $view['slots']->start('body') ?>
 
 
-<body>
+
   <div class="alert alert-danger" role="alert">Connexion refusée</div>
-  <a href="connexionAdmin">Réessayer</a>
-</body>
-</html>
+  <a href="<?php echo $view['router']->path('duillier_admin_connexionAdmin') ?>">Réessayer</a>
+
+<?php $view['slots']->stop() ?>

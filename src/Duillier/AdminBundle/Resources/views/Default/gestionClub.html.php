@@ -1,5 +1,11 @@
+<?php $view->extend('base.html.php') ?>
+
+<?php $view['slots']->set('title', 'Rangeur') ?>
+
+<?php $view['slots']->start('body') ?>
+
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 
 
   if(isset($_POST['enregistrerModif'])){
@@ -33,26 +39,13 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
 
 ?>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Nouveau concours</title>
-
-  <link href="<?php echo $view['assets']->getUrl('css/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>" rel="stylesheet" />
-  <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
-</head>
-
-
-<body>
-
   <h1 class="page-header text-center ">Gestion des clubs</h1>
 
   <div class="form-group">
     <div class="col-sm-offset-5 col-sm-5">
-      <a href="gestionClub/ajouter" class="btn btn-success">Ajouter un club</a>
-      <a href="../app_dev.php/" class="btn btn-warning">Retour</a>
+      <a href="<?php echo $view['router']->path('duillier_admin_ajouterClub') ?>" class="btn btn-success">Ajouter un club</a>
+      <a href="<?php echo $view['router']->path('duillier_admin_homepage') ?>" class="btn btn-warning">Retour</a>
+
     </div>
   </div>
 
@@ -98,6 +91,4 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
         }
         ?>
       </table>
-
-</body>
-</html>
+<?php $view['slots']->stop() ?>
