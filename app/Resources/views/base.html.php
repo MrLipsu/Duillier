@@ -7,6 +7,7 @@
         <link href="<?php echo $view['assets']->getUrl('css/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>" rel="stylesheet" />
         <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
         <script src="<?php echo $view['assets']->getUrl('jQuery/jQuery.js') ?>"></script>
+        <script src="<?php echo $view['assets']->getUrl('jQuery/notiModal.min.js') ?>"></script>
         <script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
         <script src="<?php echo $view['assets']->getUrl('jQuery/adminBundle/nouveauConcours.js') ?>"></script>
 
