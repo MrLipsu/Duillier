@@ -4,13 +4,13 @@
 
 <?php $view['slots']->start('body') ?>
 
-    <h1 class="page-header text-center">Connexion administrateur</h1>
+    <h1 class="page-header text-center">Connexion</h1>
         <form class="form-horizontal " method="post"  action="verifConnexionAdmin"  >
           <div class="form-group">
-            <label  class="col-sm-4 control-label"for="login">Nom d'utilisateur</label>
+            <label  class="col-sm-4 control-label"for="mail">Mail</label>
 
             <div class="col-sm-3">
-              <input type="text" id="login" name="login" class=" form-control " onblur="verifNom(this)" value="" required>
+              <input type="text" id="mail" name="mail" class=" form-control " onblur="verifNom(this)" value="" required>
             </div>
           </div>
           <div class="form-group">
@@ -22,8 +22,8 @@
           </div>
 
           <div class="col-sm-6">
-            <input type="submit" name="connexionAdmin" class="btn btn-success btn-s" value="Connexion">
-            <input type="hidden" name="connexionAdmin">
+            <input type="submit" name="connexion" class="btn btn-success btn-s" value="Connexion">
+            <input type="hidden" name="connexion">
             <a href="<?php echo $view['router']->path('duillier_planning_homepage') ?>" class="btn btn-warning">Annuler</a>
           </div>
 

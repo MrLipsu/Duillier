@@ -67,6 +67,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             </div>
           </div>
 
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
+            <div class="col-sm-7">
+              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
+            </div>
+          </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="email">E-mail</label>
@@ -76,13 +82,20 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           </div>
 
           <div class="form-group">
-
-            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
-
+            <label  class="col-sm-4 control-label" for="mdp">Mot de passe</label>
             <div class="col-sm-7">
-              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
+              <input type="password" id='mdp' name="mdp"  class="form-control" value="" onblur="verifMdp(this)" required>
             </div>
           </div>
+
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="mdpConfirm">Confirmez votre mot de passe</label>
+            <div class="col-sm-7">
+              <input type="password" id='mdpConfirm' name="mdpConfirm"  class="form-control" value="" onblur="verifMdpConfirm(this)" required>
+            </div>
+          </div>
+
+
 
         </fieldset>
       </div>
@@ -166,6 +179,14 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             <div>
               <input type="radio" name="groupe" id="groupe" value="1" checked> Oui
               <input type="radio" name="groupe" id="groupe" value="0"> Non
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-2 col-md-offset-1 control-label" for="chefGroupe">Etes-vous chef de groupe ? </label>
+            <div>
+              <input type="radio" name="chefGroupe" id="chefGroupe" value="1"> Oui
+              <input type="radio" name="chefGroupe" id="chefGroupe" value="0" checked> Non
             </div>
           </div>
 

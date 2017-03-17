@@ -10,5 +10,5 @@
     <a href="<?php echo $view['router']->path('duillier_admin_gestionClub') ?>" class="btn btn-primary">Gérer les clubs</a>
     <a href="<?php echo $view['router']->path('duillier_admin_gestionAdmin') ?>" class="btn btn-primary">Gérer les administrateurs</a>
     <a href="#" class="btn btn-primary">Gérer les rangeurs</a>
-    <a href="<?php echo $view['router']->path('duillier_admin_gererRepas') ?>" class="btn btn-primary">Gérer les repas</a>
+    <a href="<?php echo $view['router']->path('duillier_admin_gererRepas') ?>" class="btn btn-primary">Participation</a>
 <?php $view['slots']->stop() ?>

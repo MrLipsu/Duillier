@@ -57,3 +57,16 @@ duillier_admin_verifConnexionAdmin:
 duillier_admin_refusConnexion:
     path:     /refusConnexion
     defaults: { _controller: DuillierAdminBundle:Default:refusConnexion }
+
+duillier_admin_gestionRangeur:
+    path:     /gestionRangeur
+    defaults: { _controller: DuillierAdminBundle:Rangeur:gestionRangeur }
+
+duillier_admin_modifierRangeur:
+    path:     /modifierRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
+    defaults: { _controller: DuillierAdminBundle:Rangeur:modifierRangeur }
+
+duillier_admin_desinscrireRangeur:
+    path:     /desinscrireRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
+    defaults: { _controller: DuillierAdminBundle:Rangeur:desinscrireRangeur }
+    

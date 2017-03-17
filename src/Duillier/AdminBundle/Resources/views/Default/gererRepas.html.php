@@ -8,7 +8,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 $reponse = $bdd->query('SELECT * FROM Jour');
 ?>
 
-    <h1 class="page-header text-center ">Gestion des repas</h1>
+    <h1 class="page-header text-center ">Participation</h1>
 
     <?php
       while ($donnees = $reponse->fetch()){
