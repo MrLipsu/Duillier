@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  console.log("JQuery récupéré ! Yoann ne sait pas faire cela");
+  console.log("JQuery récupéré !");
 
 
   init();
 
-  creationDesNotif();
+  //creationDesNotif();
   verifRepas();
 
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
     }
   });
 
-  creationDesNotif();
+  //creationDesNotif();
 });
 
 
@@ -57,7 +57,7 @@ function verifRepas(){
 }
 
 
-function creationDesNotif(){
+/*function creationDesNotif(){
 
   $.notiModal.init("alerteGaucher", {
     title:"Vous etes gaucher ? ",
@@ -71,7 +71,7 @@ function creationDesNotif(){
       window.location="../planning";
     }
   });
-}
+}*/
 
 function majPrix(){
 
@@ -320,6 +320,56 @@ function verifNaissance(champ)
    }
 }
 
+function verifMdp(champ)
+{
+   if(champ.value.length < 2 || champ.value.length > 50)
+   {
+      surligne(champ, true);
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+      return true;
+   }
+}
+
+function verifMdp(champ)
+{
+   if(champ.value.length < 2 || champ.value.length > 50)
+   {
+      surligne(champ, true);
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+      return true;
+   }
+}
+
+
+function verifMdpConfirm(champ)
+{
+  if(champ.value.length < 2 || champ.value.length > 50)
+  {
+     surligne(champ, true);
+     return false;
+  }
+   else if(champ.value != mdp.value)
+   {
+      surligne(champ, true);
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+      return true;
+   }
+}
+
+
+
 
 function verifForm(f)
 {
@@ -332,8 +382,10 @@ function verifForm(f)
    var CPOk = verifCP(f.codePostal);
    var mailOk = verifMail(f.email);
    var naissanceOk = verifNaissance(f.anneeNaissance);
+   var mdpOk = verifMdp(f.mdp);
+   var mdpConfirmOk = verifMdpConfirm(f.mdpConfirm)
 
-   if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk)
+   if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk && mdpOk && mdpConfirmOk)
       return true;
    else
    {
