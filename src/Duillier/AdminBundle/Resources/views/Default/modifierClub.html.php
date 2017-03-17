@@ -1,24 +1,17 @@
+<?php $view->extend('base.html.php') ?>
+
+<?php $view['slots']->set('title', 'Rangeur') ?>
+
+<?php $view['slots']->start('body') ?>
+
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 
 $reponse = $bdd->query('SELECT * FROM Club WHERE idClub=\'' . $_GET['idClub'] . '\'');
 $donnees = $reponse->fetch();
 
 ?>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Nouveau concours</title>
-
-  <link href="<?php echo $view['assets']->getUrl('css/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>" rel="stylesheet" />
-  <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
-</head>
-
-
-<body>
 <h1 class="page-header text-center ">Modification du club</h1>
 
     <form class="form-horizontal" action="../gestionClub" method="post">
@@ -94,19 +87,13 @@ $donnees = $reponse->fetch();
           <input type="text" class="form-control" value='<?php echo $donnees['iban']; ?>' name="iban">
         </div>
       </div>
-
-      <!--Une fois qu'il a entré les nouvelles caractéristiques du livre l'admin enregistre, -->
-      <!--Une fois que l'utilisteur à enregister une vérification aura lieu grâce à au fichier verificationModification.php en passant par controller.php-->
       <div class="form-group">
         <div class="col-sm-offset-3 col-sm-6">
           <input type="submit" class="btn btn-success" value="Enregistrer"></input>
-          <a href="../gestionClub" class="btn btn-warning">Annuler</a>
-          <!--Il aura néanmoins toujours la possibilité d'annuler cette actions dans ce cas là il sera rediriger sur la page controller.php-->
+          <a href="<?php echo $view['router']->path('duillier_admin_gestionClub') ?>" class="btn btn-warning">Annuler</a>
         </div>
       </div>
       <input type="hidden" name="enregistrerModif" value="">
     </form>
 
-
-  </body>
-  </html>
+<?php $view['slots']->stop() ?>

@@ -9,6 +9,7 @@
         <script src="<?php echo $view['assets']->getUrl('jQuery/jQuery.js') ?>"></script>
         <script src="<?php echo $view['assets']->getUrl('jQuery/notiModal.min.js') ?>"></script>
         <script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
+        <script src="<?php echo $view['assets']->getUrl('jQuery/adminBundle/nouveauConcours.js') ?>"></script>
 
     </head>
     <body>
@@ -23,10 +24,10 @@
               </div>
               <div class="col-md-2" id="bouton">
                 <div class="row">
-                  <a href="../blabl " class="btn btn-warning " class="login">Connexion Administrateur</a>
+                  <a href="<?php echo $view['router']->path('duillier_admin_connexionAdmin') ?>"  class="btn btn-warning" class="login">Connexion Administrateur</a>
                 </div>
                 <div class="row">
-                  <a href="../blabl " class="btn btn-warning " class="login">Connexion Chef de Groupe</a>
+                  <a href="../blabl " class="btn btn-warning" class="login">Connexion Chef de Groupe</a>
                 </div>
               </div>
           </div>
