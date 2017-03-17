@@ -4,7 +4,7 @@
 
 <?php $view['slots']->start('body') ?>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
   <section>
@@ -60,10 +60,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="codePostal">Code postal</label>
-
             <div class="col-sm-7">
               <input type="text" id='codePostal' name="codePostal"  class="form-control" value="" onblur="verifCP(this)" required>
-
             </div>
           </div>
 
@@ -94,6 +92,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
               <input type="password" id='mdpConfirm' name="mdpConfirm"  class="form-control" value="" onblur="verifMdpConfirm(this)" required>
             </div>
           </div>
+
 
 
 
@@ -209,7 +208,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="form-group">
             <label for="jour" class="col-sm-4 control-label">Jour de tir</label>
             <div class="col-sm-3">
-              <input type="text" value=<?php echo $_POST['jour']; ?> name="jour" readonly="readonly">
+              <input type="text" value=<?php echo $_POST['jour']; ?> name="jour" id="jour" readonly="readonly">
             </div>
           </div>
 
@@ -223,7 +222,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="form-group">
             <label for="debut" class="col-sm-4 control-label">Heure de début</label>
             <div class="col-sm-3">
-              <input type="text" value=<?php echo $_POST['heure']; ?> name="heure" readonly="readonly">
+              <input type="text" value=<?php echo $_POST['heure']; ?> name="heure" id="heure" readonly="readonly">
             </div>
           </div>
 
