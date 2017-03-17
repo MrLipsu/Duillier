@@ -4,7 +4,7 @@
 
 <?php $view['slots']->start('body') ?>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
   <section>
@@ -67,6 +67,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             </div>
           </div>
 
+          <div class="form-group">
+            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
+            <div class="col-sm-7">
+              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
+            </div>
+          </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="email">E-mail</label>
@@ -75,14 +81,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             </div>
           </div>
 
-          <div class="form-group">
-
-            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
-
-            <div class="col-sm-7">
-              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
-            </div>
-          </div>
 
         </fieldset>
       </div>
@@ -188,7 +186,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="form-group">
             <label for="jour" class="col-sm-4 control-label">Jour de tir</label>
             <div class="col-sm-3">
-              <input type="text" value=<?php echo $_POST['jour']; ?> name="jour" readonly="readonly">
+              <input type="text" value=<?php echo $_POST['jour']; ?> name="jour" id="jour" readonly="readonly">
             </div>
           </div>
 
@@ -202,7 +200,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="form-group">
             <label for="debut" class="col-sm-4 control-label">Heure de début</label>
             <div class="col-sm-3">
-              <input type="text" value=<?php echo $_POST['heure']; ?> name="heure" readonly="readonly">
+              <input type="text" value=<?php echo $_POST['heure']; ?> name="heure" id="heure" readonly="readonly">
             </div>
           </div>
 
