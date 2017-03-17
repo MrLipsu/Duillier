@@ -44,7 +44,9 @@ $(document).ready(function() {
     }
   });
 
-  creationDesNotif();
+  //creationDesNotif();
+  /*var bool = isRangerOk();
+  console.log(bool);*/
 });
 
 
@@ -62,6 +64,19 @@ function creationDesNotif(){
   $.notiModal.init("alerteGaucher", {
     title:"Vous etes gaucher ? ",
     content:"Si vous êtes gaucher, nous vous conseillons de vous inscrire sur les postes 2, 4 ou 6",
+    ok:"rediriger vers le planning",
+    max_width: 800,
+    sound: true,
+    force: true,
+
+    onOkClick:function(noti_modal){
+      window.location="../planning";
+    }
+  });
+
+  $.notiModal.init("notifRangeurNonDispo", {
+    title:"Rangeur non disponible ",
+    content:"En prenant ce rangeur, vous empiétez sur un rangeur suivant qui est déja réservé",
     ok:"rediriger vers le planning",
     max_width: 800,
     sound: true,
@@ -321,9 +336,73 @@ function verifNaissance(champ)
 }
 
 
+function isRangerOk(){
+  var rangeur = $("#nombreDeRangeurs").val();
+
+  //line added for the var that will have the result
+    var result = false;
+    $.ajax({
+        type: "POST",
+        url: '../../jQuery/SignInBundle/horaireByHeure.php',
+        data: ({
+          jour : $("#jour").val(),
+          heure : $("#heure").val()
+        }),
+        dataType: "json",
+        //line added to get ajax response in sync
+        async: false,
+        success: function(datas) {
+
+          $.each(datas, function(i, data){
+            var idHoraireDebut = parseInt(data.idHoraire);
+            console.log(idHoraireDebut);
+            var idHoraireFin = parseInt(idHoraireDebut) + parseInt(rangeur - 1);
+            console.log(idHoraireFin);
+
+            $.ajax({
+                type: "POST",
+                url: '../../jQuery/SignInBundle/horaireByID.php',
+                data: ({
+                  idDebut : idHoraireDebut,
+                  idFin : idHoraireFin,
+                  idPoste : $("#poste").val()
+                }),
+                dataType: "json",
+                //line added to get ajax response in sync
+                async: false,
+                success: function(datas) {
+
+                  $.each(datas, function(i, data){
+                    console.log(data.nbIdHoraire);
+                    if(data.nbIdHoraire == 0){
+                        console.log("if");
+                      //line added to save ajax response in var result
+                      result = true;
+                    }else {
+                      console.log("else");
+                    }
+                  });
+                },
+                error: function() {
+                    alert('Error occured');
+                }
+            });
+
+          });
+
+        },
+        error: function() {
+            alert('Error occured');
+        }
+    });
+    //line added to return ajax response
+    return result;
+
+}
+
 function verifForm(f)
 {
-
+   console.log("salut");
    var nomOk = verifNom(f.nom);
    var prenomOk = verifNom(f.prenom);
    var licenceOk = verifLicence(f.idLicence);
@@ -332,9 +411,21 @@ function verifForm(f)
    var CPOk = verifCP(f.codePostal);
    var mailOk = verifMail(f.email);
    var naissanceOk = verifNaissance(f.anneeNaissance);
+   var verifPassword = verifPassword(f.password);
+   var verifRanger = isRangerOk();
+   console.log(verifRanger);
 
-   if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk)
-      return true;
+
+
+
+   if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk){
+     if (verifRanger) {
+       return true;
+     }else {
+       $.notiModal.get("notifRangeurNonDispo").show();
+       return false;
+     }
+   }
    else
    {
       alert("Veuillez remplir correctement tous les champs");
