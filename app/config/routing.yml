@@ -1,6 +1,6 @@
 duillier_admin:
     resource: "@DuillierAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 duillier_planning:
     resource: "@DuillierPlanningBundle/Resources/config/routing.yml"
