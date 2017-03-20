@@ -82,8 +82,4 @@ class DefaultController extends Controller
       return $this->render('DuillierAdminBundle:Default:gestionRangeur.html.php');
     }
 
-    public function modifierRangeurAction( $idPoste, $date, $idHoraire, $numLivret)
-    {
-      return $this->render('DuillierAdminBundle:Default:modifierRangeur.html.php');
-    }
 }
