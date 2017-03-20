@@ -54,14 +54,14 @@ class Participation
     /**
      * @var int
      *
-     * @ORM\Column(name="isInGroupe", type="tinyint")
+     * @ORM\Column(name="isInGroupe", type="boolean")
      */
     private $isInGroupe;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="isChefGroupe", type="tinyint")
+     * @ORM\Column(name="isChefGroupe", type="boolean")
      */
     private $isChefGroupe;
 
@@ -199,7 +199,7 @@ class Participation
     /**
      * Set isInGroupe
      *
-     * @param integer $isInGroupe
+     * @param boolean $isInGroupe
      *
      * @return Participation
      */
@@ -213,7 +213,7 @@ class Participation
     /**
      * Get isInGroupe
      *
-     * @return integer
+     * @return boolean
      */
     public function getIsInGroupe()
     {
@@ -225,7 +225,7 @@ class Participation
     /**
      * Set isChefGroupe
      *
-     * @param integer $isChefGroupe
+     * @param boolean $isChefGroupe
      *
      * @return Participation
      */
@@ -239,7 +239,7 @@ class Participation
     /**
      * Get isChefGroupe
      *
-     * @return integer
+     * @return boolean
      */
     public function getIsChefGroupe()
     {
