@@ -1,9 +1,7 @@
-<!-- app/Resources/views/blog/index.html.php -->
 <?php $view->extend('base.html.php') ?>
-
 <?php $view['slots']->set('title', 'Rangeur') ?>
-
 <?php $view['slots']->start('body') ?>
+
 
 <?php
 //connexion a la bdd
@@ -11,7 +9,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
 
 //insert du tireur
   if(isset($_POST['valider'])){
-
+    // $bdd->exec('UPDATE Participation SET idLicence=\''.$_POST['idLicence'].'\', nbEssai=\''.$_POST['numberNbEssai'].'\',
+    // nbRepas=\''.$_POST['numberNbRepas'].'\',
+    // montantTotal=\''.$_POST['prix'].'\'
+    // WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
 
     $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['numberNbEssai'].'\', \''.$_POST['numberNbRepas'].'\', \''.$_POST['prix'].'\')');
 
@@ -133,19 +134,35 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             if(empty($data)){
               ?>
               <td>
-              <form action="signIn/inscription" method="post">
-                <input type="submit" class="btn btn-success" value="S'inscrire"></input>
-                <input type="hidden" name="jour" value='<?php echo $jour ?>'>
-                <input type="hidden" name="poste" value='<?php echo $i ?>'>
-                <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
-                <input type="hidden" name="repas" value='<?php echo $repas ?>'>
-              </form>
+                <form action="../signIn/inscription" method="post">
+                  <input type="submit" class="btn btn-success" value="Inscrire"></input>
+                  <input type="hidden" name="jour" value='<?php echo $jour ?>'>
+                  <input type="hidden" name="poste" value='<?php echo $i ?>'>
+                  <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
+                  <input type="hidden" name="repas" value='<?php echo $repas ?>'>
+                </form>
               </td>
               <?php
             }else{
+              $idHoraire = $data['idHoraire'];
               $query = $bdd->query('select * from tireur t join participation p on t.idLicence = p.idLicence join occupe o on p.idLivret = o.numLivret where o.numLivret = '.$data['numLivret']);
               $data = $query->fetch();
-              echo $data['nomTireur'].'<br>'.$data['prenomTireur'].'</td>';
+              echo '<td>'.$data['nomTireur'].' '.$data['prenomTireur'];
+
+              ?>
+                <a href="<?php echo $view['router']->path('duillier_admin_modifierRangeur', array(
+                      'idPoste' => $data['idPoste'],
+                      'date' => $data['date'],
+                      'idHoraire' => $idHoraire,
+                      'numLivret' => $data['numLivret'],
+                      'repas' => $repas)
+                      ) ?>" class="btn btn-primary" value="<?php echo $data['idHoraire'] ?>">Modifier</a>
+
+                <a href="<?php echo $view['router']->path('duillier_admin_desinscrire', array(
+                      'numLivret' => $data['numLivret'])
+                      ) ?>" class="btn btn-danger" value="<?php echo $data['idHoraire'] ?>">Désinscrire</a>
+              </td>
+              <?php
             }
 
           }
@@ -156,4 +173,4 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
       </tbody>
     </table>
 
-  <?php $view['slots']->stop() ?>
+<?php $view['slots']->stop() ?>
