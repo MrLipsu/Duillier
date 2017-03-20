@@ -183,7 +183,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
             }else{
               $query = $bdd->query('select * from tireur t join participation p on t.idLicence = p.idLicence join occupe o on p.idLivret = o.numLivret where o.numLivret = '.$data['numLivret']);
               $data = $query->fetch();
-              echo $data['nomTireur'].'<br>'.$data['prenomTireur'].'</td>';
+              echo '<td>'.$data['nomTireur'].'<br>'.$data['prenomTireur'].'</td>';
             }
 
           }
