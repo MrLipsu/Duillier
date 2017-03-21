@@ -76,4 +76,10 @@ class DefaultController extends Controller
     {
       return $this->render('DuillierAdminBundle:Default:refusConnexion.html.php');
     }
+
+    public function gestionRangeurAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:gestionRangeur.html.php');
+    }
+
 }
