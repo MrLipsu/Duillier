@@ -1,6 +1,6 @@
 duillier_admin:
     resource: "@DuillierAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 duillier_planning:
     resource: "@DuillierPlanningBundle/Resources/config/routing.yml"
@@ -9,3 +9,14 @@ duillier_planning:
 duillier_sign_in:
     resource: "@DuillierSignInBundle/Resources/config/routing.yml"
     prefix:   /signIn
+
+login:
+    path: /login
+    defaults:
+        _controller: DuillierUserBundle:Security:login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
