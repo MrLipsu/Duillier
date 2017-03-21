@@ -15,8 +15,6 @@ $(document).ready(function() {
   $("#nbEssais").change(function() {
     majRecapNombreDeCoups();
     majPrix();
-
-
   });
 
   $("#divTirs").change(function(){
@@ -411,7 +409,6 @@ function verifForm(f)
    var CPOk = verifCP(f.codePostal);
    var mailOk = verifMail(f.email);
    var naissanceOk = verifNaissance(f.anneeNaissance);
-   var verifPassword = verifPassword(f.password);
    var verifRanger = isRangerOk();
    console.log(verifRanger);
 
@@ -420,6 +417,7 @@ function verifForm(f)
 
    if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk){
      if (verifRanger) {
+       console.log('salut');
        return true;
      }else {
        $.notiModal.get("notifRangeurNonDispo").show();
