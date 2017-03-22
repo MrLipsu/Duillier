@@ -1,10 +1,10 @@
 <?php $view->extend('base.html.php') ?>
-
+<script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
 <?php $view['slots']->set('title', 'Inscription') ?>
 
 <?php $view['slots']->start('body') ?>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
   <section>
@@ -161,7 +161,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
               <select id="club" name="club">  
                 <option value="">Pas de club choisi</option>  
                 <?php
-                $reponse = $bdd->query('SELECT * FROM club');
+                $reponse = $bdd->query('SELECT * FROM club ORDER BY nom');
                 while ($donnees = $reponse->fetch()){
                   ?>
                   <option value="<?php echo $donnees['idClub']; ?>" name="clubOption"><?php echo $donnees['nom'] ?></option>

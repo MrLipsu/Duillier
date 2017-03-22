@@ -26,5 +26,5 @@ $reponse = $bdd->query('SELECT * FROM Jour');
         echo "</ul><br><br>";
       }
     ?>
-
+    <a type="button" class="btn btn-warning" href="<?php echo $view['router']->path('duillier_admin_homepage') ?>">Retour</a>
 <?php $view['slots']->stop() ?>

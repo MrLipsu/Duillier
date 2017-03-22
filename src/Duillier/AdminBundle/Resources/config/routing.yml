@@ -69,4 +69,7 @@ duillier_admin_modifierRangeur:
 duillier_admin_desinscrireRangeur:
     path:     /desinscrireRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
     defaults: { _controller: DuillierAdminBundle:Rangeur:desinscrireRangeur }
-    
+
+duillier_admin_gestionTireur:
+    path:     /gestionTireur
+    defaults: { _controller: DuillierAdminBundle:Default:gestionTireur }

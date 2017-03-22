@@ -98,4 +98,9 @@ class DefaultController extends Controller
       return $this->render('DuillierAdminBundle:Default:supprimerRangeur.html.php');
     }
 
+    public function gestionTireurAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:gestionTireur.html.php');
+    }
+
 }
