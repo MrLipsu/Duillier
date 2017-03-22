@@ -1,4 +1,4 @@
 duillier_planning_homepage:
-    path:     /planning
+    path:     /
     defaults:
         _controller: DuillierPlanningBundle:Default:index

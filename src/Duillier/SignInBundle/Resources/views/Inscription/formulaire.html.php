@@ -15,7 +15,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
       <h1 class="page-header text-center ">Formulaire d'inscription</h1>
     </div>
 
-    <form class="form-horizontal formSignInBundle" action="../planning" method="post" onSubmit="return verifForm(this)">
+    <form class="form-horizontal formSignInBundle" action="../" method="post" onSubmit="return verifForm(this)">
 
       <div class="col-sm-5 divFormulaire ">
         <div class="startPage">
