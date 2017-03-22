@@ -62,14 +62,14 @@ duillier_admin_gestionRangeur:
     path:     /gestionRangeur
     defaults: { _controller: DuillierAdminBundle:Rangeur:gestionRangeur }
 
+duillier_admin_gestionTireur:
+    path:     /gestionTireur
+    defaults: { _controller: DuillierAdminBundle:Default:gestionTireur }
+
 duillier_admin_modifierRangeur:
     path:     /modifierRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
     defaults: { _controller: DuillierAdminBundle:Rangeur:modifierRangeur }
 
-duillier_admin_desinscrireRangeur:
-    path:     /desinscrireRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
-    defaults: { _controller: DuillierAdminBundle:Rangeur:desinscrireRangeur }
-
-duillier_admin_gestionTireur:
-    path:     /gestionTireur
-    defaults: { _controller: DuillierAdminBundle:Default:gestionTireur }
+duillier_admin_desinscrire:
+    path:     /desinscrire/{numLivret}
+    defaults: { _controller: DuillierAdminBundle:Rangeur:desinscrire }

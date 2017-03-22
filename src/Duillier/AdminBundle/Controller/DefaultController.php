@@ -82,6 +82,11 @@ class DefaultController extends Controller
       return $this->render('DuillierAdminBundle:Default:gestionRangeur.html.php');
     }
 
+    public function gestionTireurAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:gestionTireur.html.php');
+    }
+    
     public function modifierRangeurAction( $idPoste, $date, $idHoraire, $numLivret, $repas)
     {
       return $this->render('DuillierAdminBundle:Default:modifierRangeur.html.php', array(
@@ -98,9 +103,7 @@ class DefaultController extends Controller
       return $this->render('DuillierAdminBundle:Default:supprimerRangeur.html.php');
     }
 
-    public function gestionTireurAction()
-    {
-      return $this->render('DuillierAdminBundle:Default:gestionTireur.html.php');
-    }
+
+
 
 }

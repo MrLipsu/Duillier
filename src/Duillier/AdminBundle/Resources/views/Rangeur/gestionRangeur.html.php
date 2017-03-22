@@ -1,57 +1,20 @@
-<!-- app/Resources/views/blog/index.html.php -->
 <?php $view->extend('base.html.php') ?>
 <?php $view['slots']->set('title', 'Rangeur') ?>
 <?php $view['slots']->start('body') ?>
 
+
 <?php
 //connexion a la bdd
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 
-
-  if(isset($_POST['validerNewConcours'])){
-    $bdd->exec('DELETE FROM Participation');
-    $bdd->exec('DELETE FROM Jour');
-    $bdd->exec('DELETE FROM Occupe');
-    $bdd->exec('DELETE FROM Horaire');
-
-
-
-    $bdd->exec('ALTER TABLE Participation AUTO_INCREMENT=1');
-    $bdd->exec('ALTER TABLE Horaire AUTO_INCREMENT=1');
-
-
-    for($i=1; $i<=$_POST['nbJour']; $i++){
-      if($_POST['isRepas'.$i] == 1){
-        $bdd->exec('INSERT INTO Jour(repas, date) VALUES(1, \'' . $_POST['jour'.$i] . '\')');
-      }else{
-        $bdd->exec('INSERT INTO Jour(repas, date) VALUES(0, \'' . $_POST['jour'.$i] . '\')');
-      }
-    }
-
-
-    for($i=1; $i<=$_POST['nbJour']; $i++){
-      for($h=$_POST['heureDebut'.$i]; $h<$_POST['heureFin'.$i]; $h++){
-        for($m=0; $m<=45; $m+=15){
-          if($m==0 && $h<10){
-            $bdd->exec('INSERT INTO Horaire(heure, date) VALUES(\'0'.$h.'h'.$m.'0\', \'' . $_POST['jour'.$i] . '\')');
-          }
-          else if($h<10){
-            $bdd->exec('INSERT INTO Horaire(heure, date) VALUES(\'0'.$h.'h'.$m.'\', \'' . $_POST['jour'.$i] . '\')');
-          }else if($m==0){
-            $bdd->exec('INSERT INTO Horaire(heure, date) VALUES(\''.$h.'h'.$m.'0\', \'' . $_POST['jour'.$i] . '\')');
-          }
-          else{
-            $bdd->exec('INSERT INTO Horaire(heure, date) VALUES(\''.$h.'h'.$m.'\', \'' . $_POST['jour'.$i] . '\')');
-          }
-        }
-      }
-    }
-
-  }
 //insert du tireur
   if(isset($_POST['valider'])){
+    // $bdd->exec('UPDATE Participation SET idLicence=\''.$_POST['idLicence'].'\', nbEssai=\''.$_POST['numberNbEssai'].'\',
+    // nbRepas=\''.$_POST['numberNbRepas'].'\',
+    // montantTotal=\''.$_POST['prix'].'\'
+    // WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
 
-    $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal, isInGroupe, isChefGroupe) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['numberNbEssai'].'\', \''.$_POST['numberNbRepas'].'\', \''.$_POST['prix'].'\', \''.$_POST['groupe'].'\', \''.$_POST['chefGroupe'].'\')');
+    $bdd->exec('INSERT INTO Participation(idLicence, nbEssai, nbRepas, montantTotal) VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['numberNbEssai'].'\', \''.$_POST['numberNbRepas'].'\', \''.$_POST['prix'].'\')');
 
     $reponse = $bdd->query('SELECT idLivret FROM Participation WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
     $donnees1 = $reponse->fetch();
@@ -87,11 +50,11 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
     if($_POST['idLicence']==$donnees['idLicence']){
       $bdd->exec('UPDATE Tireur SET idClub=\''.$_POST['club'].'\', nomTireur=\''.$_POST['nom'].'\', prenomTireur=\''.$_POST['prenom'].'\', anneeNaissance=\''.$_POST['anneeNaissance'].'\',
       estGaucher=\''.$_POST['estGaucher'].'\', adresse=\''.$_POST['adresse'].'\', codePostalTireur=\''.$_POST['codePostal'].'\',  ville=\''.$_POST['ville'].'\',
-      commentaire=\''.$_POST['commentaire'].'\', mail=\''.$_POST['email'].'\', mdp=\''.$_POST['mdp'].'\' WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
+      commentaire=\''.$_POST['commentaire'].'\', mail=\''.$_POST['email'].'\' WHERE idLicence=\'' . $_POST['idLicence'] . '\'');
     }else{
-      $bdd->exec('INSERT INTO Tireur(idLicence, idClub, nomTireur, prenomTireur, anneeNaissance, estGaucher, adresse, codePostalTireur, ville, commentaire, mail, mdp)
+      $bdd->exec('INSERT INTO Tireur(idLicence, idClub, nomTireur, prenomTireur, anneeNaissance, estGaucher, adresse, codePostalTireur, ville, commentaire, mail)
       VALUES(\''.$_POST['idLicence'].'\', \''.$_POST['club'].'\', \''.$_POST['nom'].'\', \''.$_POST['prenom'].'\', \''.$_POST['anneeNaissance'].'\', \''.$_POST['estGaucher'].'\',
-      \''.$_POST['adresse'].'\', \''.$_POST['codePostal'].'\', \''.$_POST['ville'].'\', \''.$_POST['commentaire'].'\', \''.$_POST['email'].'\', \''.$_POST['mdp'].'\')');
+      \''.$_POST['adresse'].'\', \''.$_POST['codePostal'].'\', \''.$_POST['ville'].'\', \''.$_POST['commentaire'].'\', \''.$_POST['email'].'\')');
     }
 
   }
@@ -100,7 +63,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
   <form action="" method="post">
     <label for="">Jour de tir : </label>
     <select name="jour">    
-      <option value="null">Aucun jour sélectionné</option>
       <?php
       $reponse = $bdd->query('SELECT * FROM jour');
 
@@ -124,6 +86,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
 
 
     <?php
+    $jour="2017-03-31";
     if(isset($_POST['jour'])){
       $jour=$_POST['jour'];
     }
@@ -171,19 +134,35 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             if(empty($data)){
               ?>
               <td>
-              <form action="signIn/inscription" method="post">
-                <input type="submit" class="btn btn-success" value="S'inscrire"></input>
-                <input type="hidden" name="jour" value='<?php echo $jour ?>'>
-                <input type="hidden" name="poste" value='<?php echo $i ?>'>
-                <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
-                <input type="hidden" name="repas" value='<?php echo $repas ?>'>
-              </form>
+                <form action="../signIn/inscription" method="post">
+                  <input type="submit" class="btn btn-success" value="Inscrire"></input>
+                  <input type="hidden" name="jour" value='<?php echo $jour ?>'>
+                  <input type="hidden" name="poste" value='<?php echo $i ?>'>
+                  <input type="hidden" name="heure" value='<?php echo $donnees['heure'] ?>'>
+                  <input type="hidden" name="repas" value='<?php echo $repas ?>'>
+                </form>
               </td>
               <?php
             }else{
+              $idHoraire = $data['idHoraire'];
               $query = $bdd->query('select * from tireur t join participation p on t.idLicence = p.idLicence join occupe o on p.idLivret = o.numLivret where o.numLivret = '.$data['numLivret']);
               $data = $query->fetch();
-              echo '<td>'.$data['nomTireur'].'<br>'.$data['prenomTireur'].'</td>';
+              echo '<td>'.$data['nomTireur'].' '.$data['prenomTireur'];
+
+              ?>
+                <a href="<?php echo $view['router']->path('duillier_admin_modifierRangeur', array(
+                      'idPoste' => $data['idPoste'],
+                      'date' => $data['date'],
+                      'idHoraire' => $idHoraire,
+                      'numLivret' => $data['numLivret'],
+                      'repas' => $repas)
+                      ) ?>" class="btn btn-primary" value="<?php echo $data['idHoraire'] ?>">Modifier</a>
+
+                <a href="<?php echo $view['router']->path('duillier_admin_desinscrire', array(
+                      'numLivret' => $data['numLivret'])
+                      ) ?>" class="btn btn-danger" value="<?php echo $data['idHoraire'] ?>">Désinscrire</a>
+              </td>
+              <?php
             }
 
           }
@@ -194,4 +173,4 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
       </tbody>
     </table>
 
-  <?php $view['slots']->stop() ?>
+<?php $view['slots']->stop() ?>

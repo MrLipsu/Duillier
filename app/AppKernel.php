@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Duillier\SignInBundle\DuillierSignInBundle(),
             new Duillier\PlanningBundle\DuillierPlanningBundle(),
             new Duillier\AdminBundle\DuillierAdminBundle(),
+            new Duillier\UserBundle\DuillierUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

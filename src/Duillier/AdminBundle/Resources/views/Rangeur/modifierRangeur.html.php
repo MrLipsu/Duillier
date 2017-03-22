@@ -1,21 +1,27 @@
 <?php $view->extend('base.html.php') ?>
-<script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
-<?php $view['slots']->set('title', 'Inscription') ?>
+
+<?php $view['slots']->set('title', 'Modifier l\'inscription') ?>
 
 <?php $view['slots']->start('body') ?>
-<link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
-<script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
+<script src="<?php echo $view['assets']->getUrl('jQuery/adminBundle/modifierRangeur.js') ?>"></script>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$reponse = $bdd->query("SELECT *
+                        FROM tireur t
+                        join participation p on t.idLicence=p.idLicence
+                        where p.idLivret = '$numLivret'");
+
+$donnees = $reponse->fetch();
 ?>
 
   <section>
 
     <div class="col-sm-12 divFormulaire " >
-      <h1 class="page-header text-center ">Formulaire d'inscription</h1>
+      <h1 class="page-header text-center ">Formulaire de Modification</h1>
     </div>
 
-    <form class="form-horizontal formSignInBundle" action="../" method="post" onSubmit="return verifForm(this)">
+    <form class="form-horizontal formSignInBundle" action="../gestionRangeur" method="post" onSubmit="return verifForm(this)">
 
       <div class="col-sm-5 divFormulaire ">
         <div class="startPage">
@@ -25,78 +31,65 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
               <label  class="col-sm-4 control-label"for="nom">Nom</label>
 
               <div class="col-sm-7">
-                <input type="text" id="nom" name="nom" class=" form-control " onblur="verifNom(this)" value="" required>
+                <input type="text" id="nom" name="nom" class=" form-control " onblur="verifNom(this)" value="<?php echo $donnees['nomTireur']; ?>" required>
               </div>
             </div>
 
             <div class="form-group">
               <label   class="col-sm-4 control-label" for="prenom">Prénom</label>
               <div class="col-sm-7">
-                <input type="text" id="prenom" name="prenom"  class="form-control" value="" onblur="verifNom(this)" required>
+                <input type="text" id="prenom" name="prenom"  class="form-control" value=<?php echo $donnees['prenomTireur']; ?> onblur="verifNom(this)" required>
               </div>
-              <input type="button" id="buttonVisible" name="buttonVisible" class="btn btn-success btn-s" value="Valider">
             </div>
           </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="idLicence">Numéro de licence</label>
             <div class="col-sm-7">
-              <input type="text" id="idLicence" name="idLicence"  class="form-control" onblur="verifLicence(this)" value="" required>
+              <input type="text" id="idLicence" name="idLicence"  class="form-control" onblur="verifLicence(this)" value="<?php echo $donnees['idLicence']; ?>" required>
             </div>
           </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="adresse">Adresse</label>
             <div class="col-sm-7">
-              <input type="text" id='adresse' name="adresse"  class="form-control" value="" onblur="verifAdresse(this)" required>
+              <input type="text" id='adresse' name="adresse"  class="form-control" value="<?php echo $donnees['adresse']; ?>" onblur="verifAdresse(this)" required>
             </div>
           </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="ville">Ville</label>
             <div class="col-sm-7">
-              <input type="text" id='ville' name="ville"  class="form-control" value="" onblur="verifVille(this)" required>
+              <input type="text" id='ville' name="ville"  class="form-control" value="<?php echo $donnees['ville']; ?>" onblur="verifVille(this)" required>
 
             </div>
           </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="codePostal">Code postal</label>
+
             <div class="col-sm-7">
-              <input type="text" id='codePostal' name="codePostal"  class="form-control" value="" onblur="verifCP(this)" required>
+              <input type="text" id='codePostal' name="codePostal"  class="form-control" value="<?php echo $donnees['codePostalTireur']; ?>" onblur="verifCP(this)" required>
+
             </div>
           </div>
 
-          <div class="form-group">
-            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
-            <div class="col-sm-7">
-              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
-            </div>
-          </div>
 
           <div class="form-group">
             <label  class="col-sm-4 control-label" for="email">E-mail</label>
             <div class="col-sm-7">
-              <input type="text" id='email' name="email"  class="form-control" value="" onblur="verifMail(this)" required>
+              <input type="text" id='email' name="email"  class="form-control" value="<?php echo $donnees['mail']; ?>" onblur="verifMail(this)" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label  class="col-sm-4 control-label" for="mdp">Mot de passe</label>
+
+            <label  class="col-sm-4 control-label" for="anneeNaissance">Date de naissance complète</label>
+
             <div class="col-sm-7">
-              <input type="password" id='mdp' name="mdp"  class="form-control" value="" onblur="verifMdp(this)" required>
+              <input type="text" id='anneeNaissance' name="anneeNaissance"  class="form-control" value="<?php echo $donnees['anneeNaissance']; ?>" placeholder="JJ/MM/AAAA" onblur="verifNaissance(this)"required>
             </div>
           </div>
-
-          <div class="form-group">
-            <label  class="col-sm-4 control-label" for="mdpConfirm">Confirmez votre mot de passe</label>
-            <div class="col-sm-7">
-              <input type="password" id='mdpConfirm' name="mdpConfirm"  class="form-control" value="" onblur="verifMdpConfirm(this)" required>
-            </div>
-          </div>
-
-
-
 
         </fieldset>
       </div>
@@ -163,7 +156,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
               <select id="club" name="club">  
                 <option value="">Pas de club choisi</option>  
                 <?php
-                $reponse = $bdd->query('SELECT * FROM club ORDER BY nom');
+                $reponse = $bdd->query('SELECT * FROM club');
                 while ($donnees = $reponse->fetch()){
                   ?>
                   <option value="<?php echo $donnees['idClub']; ?>" name="clubOption"><?php echo $donnees['nom'] ?></option>
@@ -183,18 +176,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-md-2 col-md-offset-1 control-label" for="chefGroupe">Etes-vous chef de groupe ? </label>
-            <div>
-              <input type="radio" name="chefGroupe" id="chefGroupe" value="1"> Oui
-              <input type="radio" name="chefGroupe" id="chefGroupe" value="0" checked> Non
-            </div>
-          </div>
-
 
 
           <div class="form-group">
-            <input type="hidden" value=<?php echo $_POST['repas']; ?> name="booleanRepas" id="booleanRepas"readonly="readonly">
+            <input type="hidden" value=<?php echo $repas ?> name="booleanRepas" id="booleanRepas"readonly="readonly">
             <label  class="col-sm-2 col-md-offset-1 control-label" for="nbRepas">Nombre de repas</label>
             <div class="col-sm-5" id="divNbDeRepas">
               <input type="number" step="1" value="0" min="0" max="9" id="nbRepas" name="numberNbRepas">
@@ -210,21 +195,28 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
           <div class="form-group">
             <label for="jour" class="col-sm-4 control-label">Jour de tir</label>
             <div class="col-sm-3">
-              <input type="text" value=<?php echo $_POST['jour']; ?> name="jour" id="jour" readonly="readonly">
+              <input type="text" value=<?php echo $date; ?> name="jour" >
             </div>
           </div>
 
           <div class="form-group">
             <label for="poste" class="col-sm-4 control-label">Votre poste</label>
             <div class="col-sm-4">
-              <input type="text" value=<?php echo $_POST['poste']; ?> name="poste" readonly="readonly" id="poste" value="<?php echo $_POST['poste'];?>">
+              <input type="text" value=<?php echo $idPoste; ?> name="poste"  id="poste" value="<?php echo $idPoste?>">
             </div>
           </div>
 
+          <?php
+          $reponse = $bdd->query("SELECT heure
+                                  FROM horaire
+                                  where idHoraire = '$idHoraire'");
+
+          $donnees = $reponse->fetch();
+           ?>
           <div class="form-group">
             <label for="debut" class="col-sm-4 control-label">Heure de début</label>
             <div class="col-sm-3">
-              <input type="text" value=<?php echo $_POST['heure']; ?> name="heure" id="heure" readonly="readonly">
+              <input type="text" value=<?php echo $donnees['heure']; ?> name="heure" >
             </div>
           </div>
 
