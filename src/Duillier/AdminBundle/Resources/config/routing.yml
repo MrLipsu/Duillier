@@ -73,3 +73,7 @@ duillier_admin_modifierRangeur:
 duillier_admin_desinscrire:
     path:     /desinscrire/{numLivret}
     defaults: { _controller: DuillierAdminBundle:Rangeur:desinscrire }
+
+duillier_admin_gestionGroupe:
+    path:     /gestionGroupe
+    defaults: { _controller: DuillierAdminBundle:Default:gestionGroupe }
