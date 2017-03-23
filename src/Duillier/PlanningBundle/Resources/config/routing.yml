@@ -2,3 +2,8 @@ duillier_planning_homepage:
     path:     /
     defaults:
         _controller: DuillierPlanningBundle:Default:index
+
+duillier_form_homepage:
+    path:     /form
+    defaults:
+        _controller: DuillierPlanningBundle:Default:form

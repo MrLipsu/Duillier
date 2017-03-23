@@ -6,6 +6,7 @@ namespace Duillier\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Duillier\UserBundle\Entity\User;
 
 class SecurityController extends Controller
 {
@@ -19,6 +20,15 @@ class SecurityController extends Controller
       return $this->render('DuillierPlanningBundle:Default:index.html.php');
     }
 
+    /*$em = $this->getDoctrine()->getManager();
+    $user = new User();
+    $user->setUsername('yoann');
+    $user->setPassword('yoann');
+    $user->setSalt('');
+    $user->setRoles(array('ROLE_ADMIN'));
+
+    $em->persist($user);
+    $em->flush();*/
     // Le service authentication_utils permet de récupérer le nom d'utilisateur
     // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
     // (mauvais mot de passe par exemple)
