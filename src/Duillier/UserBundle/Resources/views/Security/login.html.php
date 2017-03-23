@@ -3,8 +3,12 @@
 <?php $view['slots']->start('body') ?>
 
 
-  <?php if($error)
-    echo "<div class='alert alert-danger'>Login ou mot de passe incorrecte</div>";
+  <?php
+    if($error)
+    {
+      //var_dump($error);
+      echo "<div class='alert alert-danger'>Login ou mot de passe incorrecte</div>";
+    }
   ?>
 
   <form action="<?php echo $view['router']->path('login_check') ?>" method="post">
