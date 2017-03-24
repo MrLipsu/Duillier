@@ -3,7 +3,7 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 $clubQuery = $bdd->query('SELECT DISTINCT c.nom
                         FROM Participation p
                         JOIN tireur t ON p.idLicence=t.idLicence

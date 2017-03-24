@@ -3,7 +3,7 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 
 $reponse = $bdd->query('SELECT * FROM Jour');
 ?>
