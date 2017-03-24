@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   init();
 
-  //creationDesNotif();
+  creationDesNotif();
   verifRepas();
 
 
@@ -38,16 +38,7 @@ $(document).ready(function() {
   });
 
 
-  $("#estGaucher").change(function(){
-    if ($("#poste").attr("value") != 2 && $("#poste").attr("value") != 4 && $("#poste").attr("value") != 6) {
-      $.notiModal.get("alerteGaucher").show();
-    }
-  });
 
-  //creationDesNotif();
-
-  /*var bool = isRangerOk();
-  console.log(bool);*/
 });
 
 
@@ -60,7 +51,7 @@ function verifRepas(){
 }
 
 
-/*function creationDesNotif(){
+function creationDesNotif(){
 
   $.notiModal.init("alerteGaucher", {
     title:"Vous etes gaucher ? ",
@@ -74,9 +65,6 @@ function verifRepas(){
       window.location="../planning";
     }
   });
-
-}*/
-
 
   $.notiModal.init("notifRangeurNonDispo", {
     title:"Rangeur non disponible ",

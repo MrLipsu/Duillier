@@ -6,6 +6,9 @@ $(document).ready(function() {
   majRecapNombreDeCoups();
   majPrix();
 
+  preRemplissageDesChamps();
+
+  //$('#jour').val(tranformDate($('#jour').val()));
 
   $("#nbEssais").change(function() {
     majRecapNombreDeCoups();
@@ -29,16 +32,43 @@ $(document).ready(function() {
     majPrix();
   });
 
-
-  $("#estGaucher").change(function(){
-    if ($("#poste").attr("value") != 2 && $("#poste").attr("value") != 4 && $("#poste").attr("value") != 6) {
-      $.notiModal.get("alerteGaucher").show();
-    }
-  });
-
-
+  //$('#groupe[value="0"]').attr('checked', true);
 });
 
+
+
+
+
+
+
+
+
+
+
+
+function preRemplissageDesChamps(){
+
+  $('#club').val($("#clubActuel").val());
+
+  preRemplissageBoutonRadio('estGaucher', 'preRemplissageEstGaucher');
+  preRemplissageBoutonRadio('groupe', 'preRemplissageGroupe');
+  preRemplissageBoutonRadio('chefGroupe', 'preRemplissageChefGroupe');
+  preRemplissageBoutonRadio('doleGroupe', 'preRemplissageDoleGroupe');
+  preRemplissageBoutonRadio('duillier', 'preRemplissageDuillier');
+  preRemplissageBoutonRadio('montBlanc', 'preRemplissageMontblanc');
+  preRemplissageBoutonRadio('perceNeige', 'preRemplissagePerceNeige');
+
+}
+
+function preRemplissageBoutonRadio(idBouttonRadio, idHiddenDePreRemplissage){
+  var ValueDePreRemplissage = $('#'+idHiddenDePreRemplissage).val();
+  //console.log("value : "+ValueDePreRemplissage);
+  if (ValueDePreRemplissage == false) {
+    ValueDePreRemplissage = 0;
+  }
+  $('#'+idBouttonRadio+'[value="'+ValueDePreRemplissage+'"]').attr('checked', true);
+
+}
 
 function verifRepas(){
   if ($("#booleanRepas").val() == 0) {
@@ -60,6 +90,19 @@ function creationDesNotif(){
 
     onOkClick:function(noti_modal){
       window.location="../planning";
+    }
+  });
+
+  $.notiModal.init("notifRangeurNonDispo", {
+    title:"Rangeur non disponible ",
+    content:"En prenant ce rangeur, vous empiétez sur un rangeur suivant qui est déja réservé",
+    ok:"rediriger vers le planning",
+    max_width: 800,
+    sound: true,
+    force: true,
+
+    onOkClick:function(noti_modal){
+      window.location="../../../../../gestionRangeur";
     }
   });
 }
@@ -157,6 +200,12 @@ function tranformDate(date){
   }
 
   return date;
+}
+
+function transformDateToYYYYMMDD(date){
+
+  var newdate = date.split("/").reverse().join("-");
+  return newdate;
 }
 
 
@@ -272,9 +321,96 @@ function verifNaissance(champ)
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+function isRangerOk(){
+  var rangeur = $("#nombreDeRangeurs").val();
+  console.log($("#nombreDeRangeurs").val());
+  console.log($("#jour").val());
+  console.log($("#heure").val());
+  console.log($("#idLivret").val());
+
+  //line added for the var that will have the result
+    var result = false;
+    $.ajax({
+        type: "POST",
+        url: '../../../../../../../jQuery/SignInBundle/horaireByHeure.php',
+        data: ({
+          jour : $("#jour").val(),
+          heure : $("#heure").val()
+        }),
+        dataType: "json",
+        //line added to get ajax response in sync
+        async: false,
+        success: function(datas) {
+          console.log('tamaman');
+          $.each(datas, function(i, data){
+            var idHoraireDebut = parseInt(data.idHoraire);
+            console.log(idHoraireDebut);
+            var idHoraireFin = parseInt(idHoraireDebut) + parseInt(rangeur - 1);
+            console.log(idHoraireFin);
+
+            $.ajax({
+                type: "POST",
+                url: '../../../../../../../jQuery/adminBundle/occupeAndPoste.php',
+                data: ({
+                  idDebut : idHoraireDebut,
+                  idFin : idHoraireFin,
+                  idPoste : $("#poste").val()
+                }),
+                dataType: "json",
+                //line added to get ajax response in sync
+                async: false,
+                success: function(datas) {
+                  result = true;
+                  $.each(datas, function(i, data){
+                    console.log(data.nbIdHoraire);
+                    console.log("num livret : "+data.numLivret);
+                    if(data.nbIdHoraire == 0){
+                        console.log("if");
+                      //line added to save ajax response in var result
+                      result = true;
+                    }else {
+                      console.log("else");
+                      console.log($("#idLivret").val());
+                      if ($("#idLivret").val() != data.numLivret) {
+                        result = false;
+                      }
+
+
+                    }
+                  });
+                },
+                error: function() {
+                    alert('Error occured lol');
+                }
+            });
+
+          });
+
+        },
+        error: function() {
+            alert('Error occured ta mere');
+        }
+    });
+    //line added to return ajax response
+    return result;
+
+}
+
+
 function verifForm(f)
 {
-
+   console.log("salut");
    var nomOk = verifNom(f.nom);
    var prenomOk = verifNom(f.prenom);
    var licenceOk = verifLicence(f.idLicence);
@@ -284,8 +420,22 @@ function verifForm(f)
    var mailOk = verifMail(f.email);
    var naissanceOk = verifNaissance(f.anneeNaissance);
 
-   if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk)
-      return true;
+
+
+
+   var verifRanger = isRangerOk();
+   console.log(verifRanger);
+
+
+   if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk ){
+     if (verifRanger) {
+       return true;
+     }else {
+       $.notiModal.get("notifRangeurNonDispo").show();
+
+       return false;
+     }
+   }
    else
    {
       alert("Veuillez remplir correctement tous les champs");
