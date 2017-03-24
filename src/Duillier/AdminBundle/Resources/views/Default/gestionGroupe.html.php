@@ -20,14 +20,16 @@ while ($club = $clubQuery->fetch()){
                           JOIN club c ON c.idClub=t.idClub
                           WHERE c.nom=\''.$club['nom'].'\' AND p.isInGroupe=1
                           ORDER BY p.numGroupe');
+
+  echo "<ul>";
   while($donnees = $reponse->fetch()){
-    echo "<ul>";
-    echo "<li>".$donnees['prenomTireur']." ".$donnees['nomTireur']." -- Groupe ".$donnees['numGroupe']."</li>";
-    echo "</ul>";
+    echo "<li>".$donnees['prenomTireur']." ".$donnees['nomTireur']." -- Groupe ".$donnees['numGroupe']."</li>";    
   }
+  echo "</ul>";
 }
 
  ?>
 
     <a type="button" class="btn btn-warning" href="<?php echo $view['router']->path('duillier_admin_homepage') ?>">Retour</a>
+
 <?php $view['slots']->stop() ?>

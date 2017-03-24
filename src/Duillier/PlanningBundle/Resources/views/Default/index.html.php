@@ -48,6 +48,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
     }
 
   }
+
+
 //insert du tireur
   if(isset($_POST['valider'])){
 
@@ -95,12 +97,21 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'r
     }
 
   }
+
+  if(isset($_POST['validerGestionGroupe'])){
+    for($j=1; $j<=$_POST['nbGroupe']; $j++){
+      for($i=1;$i<=5; $i++){
+        $bdd->exec('UPDATE participation SET numGroupe=\''.$j.'\' WHERE idLicence=\''.$_POST['tireur'.$i].'\'');
+      }
+    }
+  }
+
 ?>
 
   <form action="" method="post">
     <label for="">Jour de tir : </label>
     <select name="jour">    
-      <option value="null">Aucun jour sélectionné</option>
+      <!--<option value="null">Aucun jour sélectionné</option>-->
       <?php
       $reponse = $bdd->query('SELECT * FROM jour');
 
