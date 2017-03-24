@@ -3,13 +3,13 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
-    <h1 class="page-header text-center ">Création d'un nouveau concours</h1>
+    <h1 class="page-header text-center ">Création de la prochaine édition</h1>
 
 
-  <form class="" action="../app_dev.php/planning" method="post">
+  <form class="" action="<?php echo $view['router']->path('duillier_planning_homepage') ?>" method="post">
 
     <!--<label for="annee">Année</label>
     <select name="annee">
@@ -25,7 +25,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
 
 <br> -->
 
-  <label for="jour">Nombre de jours de tir</label>
+  <label for="jour">Nombre de dates</label>
   <select name="nbJour" id="nbJour">
     <?php
       for($i=0; $i<=10; $i++){

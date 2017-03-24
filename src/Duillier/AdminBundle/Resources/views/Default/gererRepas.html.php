@@ -12,19 +12,30 @@ $reponse = $bdd->query('SELECT * FROM Jour');
 
     <?php
       while ($donnees = $reponse->fetch()){
-        $query = $bdd->query('SELECT SUM(nbRepas) AS nbRepas, count(*) AS nbRangeur
+        $queryRangeur = $bdd->query('SELECT count(*) AS nbRangeur
                               FROM Participation p
                               JOIN Occupe o ON p.idLivret=o.numLivret
                               JOIN Jour j ON j.date=o.date
                               WHERE j.date=\''.$donnees['date'] .'\'');
-        $data = $query->fetch();
+        $rangeur = $queryRangeur->fetch();
+
+        $queryRepas = $bdd->query('SELECT DISTINCT o.numLivret, nbRepas
+                                  FROM Participation p
+                                  JOIN Occupe o ON p.idLivret=o.numLivret
+                                  WHERE o.date=\''.$donnees['date'] .'\'');
+        $nbRepas=0;
+        while ($repas = $queryRepas->fetch()){
+          $nbRepas = $nbRepas + $repas['nbRepas'];
+        }
+
 
         echo "<h4>".$donnees['date']."</h4><br>";
         echo "<ul>";
-        echo "<li>".$data['nbRepas']." repas réservés.</li><br>";
-        echo "<li>".$data['nbRangeur']." rangeurs réservés.</li><br>";
+        //echo "<li>".$repas['nbRepas']." repas réservés.</li><br>";
+        echo "<li>".$nbRepas." repas réservés.</li><br>";
+        echo "<li>".$rangeur['nbRangeur']." rangeurs réservés.</li><br>";
         echo "</ul><br><br>";
       }
     ?>
-
+    <a type="button" class="btn btn-warning" href="<?php echo $view['router']->path('duillier_admin_homepage') ?>">Retour</a>
 <?php $view['slots']->stop() ?>

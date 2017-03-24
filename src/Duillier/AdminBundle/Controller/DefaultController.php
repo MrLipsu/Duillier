@@ -82,4 +82,33 @@ class DefaultController extends Controller
       return $this->render('DuillierAdminBundle:Default:gestionRangeur.html.php');
     }
 
+    public function gestionTireurAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:gestionTireur.html.php');
+    }
+
+    public function gestionGroupeAction()
+    {
+      return $this->render('DuillierAdminBundle:Default:gestionGroupe.html.php');
+    }
+
+    public function modifierRangeurAction( $idPoste, $date, $idHoraire, $numLivret, $repas)
+    {
+      return $this->render('DuillierAdminBundle:Default:modifierRangeur.html.php', array(
+        'idPoste' => $idPoste ,
+        'date' => $date,
+        'idHoraire' => $idHoraire,
+        'numLivret' => $numLivret,
+        'repas' => $repas,
+      ));
+    }
+
+    public function desinscrireRangeurAction( $idPoste, $date, $idHoraire, $numLivret, $repas)
+    {
+      return $this->render('DuillierAdminBundle:Default:supprimerRangeur.html.php');
+    }
+
+
+
+
 }

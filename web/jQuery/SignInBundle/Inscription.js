@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  console.log("JQuery récupéré !");
+  console.log("JQuery récupéré inscript !");
 
 
   init();
@@ -15,8 +15,11 @@ $(document).ready(function() {
   $("#nbEssais").change(function() {
     majRecapNombreDeCoups();
     majPrix();
+  });
 
-
+  $("#divTirs").change(function(){
+    majRecapNombreDeCoups();
+    majPrix();
   });
 
   $("#divTirs").change(function(){
@@ -29,14 +32,12 @@ $(document).ready(function() {
     if ($("#poste").attr("value") != 2 && $("#poste").attr("value") != 4 && $("#poste").attr("value") != 6) {
       $.notiModal.get("alerteGaucher").show();
     }
-
   });
 
-  $("#divTirs").change(function(){
-    majRecapNombreDeCoups();
-    majPrix();
-  });
 
+  $("#chefGroupe").change(function(){
+      $.notiModal.get("alerteChefGroupe").show();
+  });
 
 
 });
@@ -46,7 +47,7 @@ $(document).ready(function() {
 function verifRepas(){
   if ($("#booleanRepas").val() == 0) {
     $("#nbRepas").css('visibility', 'hidden');
-    $("#divNbDeRepas").prepend("Il n'y a pas de repas ce jour là");
+    $("#divNbDeRepas").prepend("Il n’est pas servi de repas ce jour-là");
   }
 }
 
@@ -54,31 +55,54 @@ function verifRepas(){
 function creationDesNotif(){
 
   $.notiModal.init("alerteGaucher", {
-    title:"Vous etes gaucher ? ",
+    title:"Vous êtes gaucher ? ",
     content:"Si vous êtes gaucher, nous vous conseillons de vous inscrire sur les postes 2, 4 ou 6",
-    ok:"rediriger vers le planning",
+    ok:"Retourner au planning",
+    close: "Poursuivre",
     max_width: 800,
-    sound: true,
+    sound: false,
     force: true,
 
     onOkClick:function(noti_modal){
-      window.location="../planning";
+      window.location="../";
     }
   });
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2cb5230cfb4daf525691e9fe919bf30635b95535
   $.notiModal.init("notifRangeurNonDispo", {
-    title:"Rangeur non disponible ",
+    title:"Nombre de rangeur insuffisant",
     content:"En prenant ce rangeur, vous empiétez sur un rangeur suivant qui est déja réservé",
-    ok:"rediriger vers le planning",
+    ok:"Retourner au planning",
+    close: "Fermer",
     max_width: 800,
-    sound: true,
+    sound: false,
     force: true,
 
     onOkClick:function(noti_modal){
-      window.location="../planning";
+      window.location="../";
+    }
+  });
+
+
+  $.notiModal.init("alerteChefGroupe", {
+    title:"Vous êtes chef de groupe ?",
+    content:"Attention, vous prenez la responsabilité d’être chef de groupe et de composer les groupes de la société. Il n’y a qu’un chef de groupe par société. Si vous n’occupez pas cette fonction, merci de cliquer sur « non ».",
+    ok:"Retourner au planning",
+    close: "Fermer",
+    max_width: 800,
+    sound: false,
+    force: true,
+
+    onOkClick:function(noti_modal){
+      window.location="../";
     }
   });
 }
+
 
 function majPrix(){
 
@@ -454,6 +478,7 @@ function verifForm(f)
    var mailOk = verifMail(f.email);
    var naissanceOk = verifNaissance(f.anneeNaissance);
 
+
    var mdpOk = verifMdp(f.mdp);
    var mdpConfirmOk = verifMdpConfirm(f.mdpConfirm)
 
@@ -464,6 +489,7 @@ function verifForm(f)
 
    if(nomOk && prenomOk && licenceOk && adresseOk && villeOk && CPOk && mailOk && naissanceOk && mdpOk && mdpConfirmOk){
      if (verifRanger) {
+       console.log('salut');
        return true;
      }else {
        $.notiModal.get("notifRangeurNonDispo").show();

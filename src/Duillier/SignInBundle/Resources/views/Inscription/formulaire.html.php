@@ -1,12 +1,12 @@
 <?php $view->extend('base.html.php') ?>
-
+<script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
 <?php $view['slots']->set('title', 'Inscription') ?>
 
 <?php $view['slots']->start('body') ?>
 <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
 <script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
   <section>
@@ -15,7 +15,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
       <h1 class="page-header text-center ">Formulaire d'inscription</h1>
     </div>
 
-    <form class="form-horizontal formSignInBundle" action="../planning" method="post" onSubmit="return verifForm(this)">
+    <form class="form-horizontal formSignInBundle" action="<?php echo $view['router']->path('duillier_form_homepage') ?>" method="post" onSubmit="return verifForm(this)">
 
       <div class="col-sm-5 divFormulaire ">
         <div class="startPage">
@@ -163,7 +163,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
               <select id="club" name="club">  
                 <option value="">Pas de club choisi</option>  
                 <?php
-                $reponse = $bdd->query('SELECT * FROM club');
+                $reponse = $bdd->query('SELECT * FROM club ORDER BY nom');
                 while ($donnees = $reponse->fetch()){
                   ?>
                   <option value="<?php echo $donnees['idClub']; ?>" name="clubOption"><?php echo $donnees['nom'] ?></option>

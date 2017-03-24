@@ -5,3 +5,7 @@ duillier_sign_in_homepage:
 duillier_sign_in_formulaire:
     path:    /inscription
     defaults: {_controller: DuillierSignInBundle:Inscription:index}
+
+duillier_sign_in_groupe:
+    path:    /inscriptionGroupe
+    defaults: {_controller: DuillierSignInBundle:Inscription:groupe}

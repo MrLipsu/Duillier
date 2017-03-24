@@ -24,10 +24,23 @@
               </div>
               <div class="col-md-2" id="bouton">
                 <div class="row">
-                  <a href="<?php echo $view['router']->path('duillier_admin_connexionAdmin') ?>"  class="btn btn-warning" class="login">Connexion Administrateur</a>
-                </div>
-                <div class="row">
-                  <a href="../blabl " class="btn btn-warning" class="login">Connexion Chef de Groupe</a>
+                  <?php
+                  //var_dump($this);
+                  //var_dump($this->get('security'));
+                  //var_dump($this->get('security'));
+                  if ($view['security']->isGranted('ROLE_USER')){
+                    echo "<a href=".$view['router']->path('logout')." class='btn btn-warning' class='login'>Deconnexion</a>";
+                    if ($view['security']->isGranted('ROLE_ADMIN')){
+                      echo "<a href=".$view['router']->path('duillier_admin_homepage')." class='btn btn-warning' class='login'>Gestion Administrateur</a>";
+                    }
+                    if ($view['security']->isGranted('ROLE_GROUP')){
+                      echo "<a href=".$view['router']->path('duillier_sign_in_groupe')." class='btn btn-warning' class='login'>Gestion Des groupes</a>";
+                    }
+                  }else{
+                    echo "<a href=".$view['router']->path('login')." class='btn btn-warning' class='login'>Connexion</a>";
+                  }
+                  ?>
+
                 </div>
               </div>
           </div>
