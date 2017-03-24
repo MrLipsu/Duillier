@@ -131,7 +131,7 @@ class RangeurController extends Controller
       );
 
       foreach ($tirsADesinscrire as $compose) {
-        $em->remove($compose);
+        $em->remove($rangeur);
       }
 
       $participation = $em->getRepository('DuillierPlanningBundle:Participation' )->find($numLivret);
