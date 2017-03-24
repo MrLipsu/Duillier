@@ -3,13 +3,13 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
 ?>
 
     <h1 class="page-header text-center ">Création de la prochaine édition</h1>
 
 
-  <form class="" action="../app_dev.php/planning" method="post">
+  <form class="" action="<?php echo $view['router']->path('duillier_planning_homepage') ?>" method="post">
 
     <!--<label for="annee">Année</label>
     <select name="annee">

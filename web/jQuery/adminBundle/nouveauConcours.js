@@ -19,5 +19,44 @@ $(document).ready(function() {
 });
 
 function verifDate(){
-  
+  $.post(
+      '../../jQuery/adminBundle/date.php',
+      {
+
+      },
+
+      function(datas){
+        $.each(datas, function(i, data){
+          var date = data.date;
+          var annee = date.substring(0,4);
+          var mois = date.substring(5,7);
+          var jour = date.substring(8,10);
+          var nbMoisEcart = 1;
+          var moisAutorisationNouveauConcours = parseInt(mois) + parseInt(nbMoisEcart);
+          if(moisAutorisationNouveauConcours<10){
+            moisAutorisationNouveauConcours="0"+moisAutorisationNouveauConcours;
+          }
+          var dateAutorisationNouveauConcours = annee+"-"+moisAutorisationNouveauConcours+"-"+jour;
+
+          var dateDuJour = new Date();
+          var dayNow=dateDuJour.getDate();
+          var monthNow=dateDuJour.getMonth()+1;
+          if(monthNow<10){
+            monthNow="0"+monthNow;
+          }
+          var yearNow=dateDuJour.getFullYear();
+          dateDuJour = yearNow+"-"+monthNow+"-"+dayNow;
+
+          if(dateDuJour<dateAutorisationNouveauConcours){
+            console.log("non autorisé");
+            $("#prochaineEdition").css('visibility', 'hidden');
+          }else{
+            console.log("autorisé");
+            $("#prochaineEdition").css('visibility', 'visible');
+          }
+        });
+
+      },
+      'json'
+  );
 }
