@@ -34,7 +34,7 @@
                       echo "<a href=".$view['router']->path('duillier_admin_homepage')." class='btn btn-warning' class='login'>Gestion Administrateur</a>";
                     }
                     if ($view['security']->isGranted('ROLE_GROUP')){
-                      echo "<a href=".$view['router']->path('duillier_admin_homepage')." class='btn btn-warning' class='login'>Gestion Des groupes</a>";
+                      echo "<a href=".$view['router']->path('duillier_sign_in_groupe')." class='btn btn-warning' class='login'>Gestion Des groupes</a>";
                     }
                   }else{
                     echo "<a href=".$view['router']->path('login')." class='btn btn-warning' class='login'>Connexion</a>";
