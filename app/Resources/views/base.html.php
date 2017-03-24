@@ -17,7 +17,14 @@
           <header>
             <div id="titre" class="row" style="display: inline-block; width: 100%;">
               <div class="col-md-2">
-                <img src="<?php echo $view['assets']->getUrl('images/logotitreduillier.png') ?>" class="img-circle img-responsive logo" style="width:100px;height:auto;float: left; margin:10px;" >
+                <a href="<?php echo $view['router']->path('duillier_planning_homepage') ?>">
+                  <img
+                    src="<?php echo $view['assets']->getUrl('images/logotitreduillier.png') ?>"
+                    class="img-circle img-responsive logo"
+                    style="width:100px;height:auto;float: left; margin:10px;">
+                </a>
+
+
               </div>
               <div class="col-md-8 text-center">
                 <p style="display: inline-block;">Inscription Perce-Neige <?php echo date('Y'); ?></p>
