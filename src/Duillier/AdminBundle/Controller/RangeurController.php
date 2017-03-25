@@ -146,10 +146,10 @@ class RangeurController extends Controller
       $participation = $em->getRepository('DuillierPlanningBundle:Participation' )->find($numLivret);
       $idLicence = $participation->getIdLicence();
 
-      $tireur = $em->getRepository('DuillierPlanningBundle:Tireur' )->find($idLicence);
+      $tireur = $em->getRepository('DuillierPlanningBundle:Participation' )->find($idLicence);
       $email = $tireur->getMail();
 
-      $user = $em->getRepository('DuillierPlanningBundle:User' )->findOneBy(array(
+      $user = $em->getRepository('DuillierUserBundle:User' )->findOneBy(array(
         'username'=>$email)
       );
       $em->remove($user);
