@@ -490,6 +490,7 @@ function isUnique(){
         if(data.nbIdLicence == 0){
           //line added to save ajax response in var result
           result = true;
+          console.log(result);
         }
       });
 

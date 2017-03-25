@@ -8,7 +8,7 @@ $idLicence = $_POST['idLicence'];
 
 $query = $bdd->query("SELECT count(idLicence) as nbIdLicence
                       FROM participation
-                      WHERE idLicence >= '$idLicence'");
+                      WHERE idLicence = '$idLicence'");
 
 
 $query->execute();
