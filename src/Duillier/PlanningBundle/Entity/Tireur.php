@@ -487,20 +487,20 @@ class Tireur
   *
   * @return Tireur
   */
-  public function setMdp($mdp)
+  public function setMdp($mail)
   {
-    $this->mdp = $mdp;
+    $this->mail = $mail;
 
     return $this;
   }
 
   /**
-  * Get mdp
+  * Get mail
   *
   * @return string
   */
-  public function getMdp()
+  public function getMail()
   {
-    return $this->mdp;
+    return $this->mail;
   }
 }

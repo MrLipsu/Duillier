@@ -6,7 +6,7 @@
 <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
 <script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
 ?>
 
 <h1 class="page-header text-center ">Gestion des groupes</h1>
