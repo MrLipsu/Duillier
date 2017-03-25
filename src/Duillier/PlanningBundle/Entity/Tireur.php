@@ -470,14 +470,6 @@ class Tireur
     return $this;
   }
 
-  /**
-  * Get mail
-  *
-  * @return string
-  */
-  public function getMail()
-  {
-    return $this->mail;
-  }
+
 
 }

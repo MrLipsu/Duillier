@@ -51,7 +51,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
                 <?php
               }
               else{
-                  $bdd->exec('INSERT INTO Admin(login, mdp) VALUES( \''.$_POST['login'].'\', \''.$_POST['mdp2'].'\')');
+                  //INSERT INTO `user` ( `username`, `password`, `salt`, `roles`) VALUES ( 'seb', 'seb', '', 'a:1:{i:0;s:10:"ROLE_ADMIN";}')
+                  $bdd->exec('INSERT INTO user(username, password, salt, roles) VALUES( \''.$_POST['login'].'\', \''.$_POST['mdp2'].'\', \'\', \'a:1:{i:0;s:10:"ROLE_ADMIN";}\')');
                   }
         }
 
