@@ -58,22 +58,26 @@ duillier_admin_refusConnexion:
     path:     /refusConnexion
     defaults: { _controller: DuillierAdminBundle:Default:refusConnexion }
 
-duillier_admin_gestionRangeur:
-    path:     /gestionRangeur
-    defaults: { _controller: DuillierAdminBundle:Rangeur:gestionRangeur }
-
 duillier_admin_gestionTireur:
     path:     /gestionTireur
     defaults: { _controller: DuillierAdminBundle:Default:gestionTireur }
 
-duillier_admin_modifierRangeur:
-    path:     /modifierRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
-    defaults: { _controller: DuillierAdminBundle:Rangeur:modifierRangeur }
+duillier_admin_gestionGroupe:
+    path:     /gestionGroupe
+    defaults: { _controller: DuillierAdminBundle:Default:gestionGroupe }
+
+duillier_admin_gestionRangeur:
+    path:     /gestionRangeur
+    defaults: { _controller: DuillierAdminBundle:Rangeur:gestionRangeur }
 
 duillier_admin_desinscrire:
     path:     /desinscrire/{numLivret}
     defaults: { _controller: DuillierAdminBundle:Rangeur:desinscrire }
 
-duillier_admin_gestionGroupe:
-    path:     /gestionGroupe
-    defaults: { _controller: DuillierAdminBundle:Default:gestionGroupe }
+duillier_admin_formModifierRangeur:
+    path:     /formModifierRangeur/{idPoste}/{date}/{idHoraire}/{numLivret}/{repas}
+    defaults: { _controller: DuillierAdminBundle:Rangeur:formModifierRangeur }
+
+duillier_admin_modifierRangeur:
+    path:     /modifier/
+    defaults: { _controller: DuillierAdminBundle:Rangeur:modifierRangeur }

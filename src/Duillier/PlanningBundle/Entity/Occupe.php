@@ -50,14 +50,32 @@ class Occupe
     private $numLivret;
 
 
+
+
+    public function __construct($idPoste, $date, $idHoraire, $numLivret){
+
+      $this->idPoste = $idPoste;
+      $this->date = $date;
+      $this->idHoraire = $idHoraire;
+      $this->numLivret = $numLivret;
+    }
+
+
+
+
+
+
+
+
+
     /**
-     * Get id
+     * Get idOccupe
      *
      * @return integer
      */
-    public function getId()
+    public function getIdOccupe()
     {
-        return $this->id;
+        return $this->idOccupe;
     }
 
     /**

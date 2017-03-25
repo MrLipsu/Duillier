@@ -5,14 +5,13 @@ namespace Duillier\PlanningBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* Tireur
-*
-* @ORM\Table(name="tireur")
-* @ORM\Entity(repositoryClass="Duillier\PlanningBundle\Repository\TireurRepository")
-*/
+ * Tireur
+ *
+ * @ORM\Table(name="tireur")
+ * @ORM\Entity(repositoryClass="Duillier\PlanningBundle\Repository\TireurRepository")
+ */
 class Tireur
 {
-
 
   /**
   * @var int
@@ -134,29 +133,6 @@ class Tireur
 
 
 
-  /**
-  * Get id
-  *
-  * @return integer
-  */
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  /**
-  * Set idLicence
-  *
-  * @param integer $idLicence
-  *
-  * @return Tireur
-  */
-  public function setIdLicence($idLicence)
-  {
-    $this->idLicence = $idLicence;
-
-    return $this;
-  }
 
   /**
   * Get idLicence
@@ -503,4 +479,5 @@ class Tireur
   {
     return $this->mail;
   }
+
 }

@@ -69,7 +69,6 @@ function creationDesNotif(){
   });
 
 
-
   $.notiModal.init("notifRangeurNonDispo", {
     title:"Nombre de rangeur insuffisant",
     content:"En prenant ce rangeur, vous empiétez sur un rangeur suivant qui est déja réservé",
