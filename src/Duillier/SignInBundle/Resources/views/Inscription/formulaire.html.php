@@ -6,7 +6,8 @@
 <link href="<?php echo $view['assets']->getUrl('css/SignInBundle/style.css') ?>" rel="stylesheet" />
 <script src="<?php echo $view['assets']->getUrl('jQuery/SignInBundle/Inscription.js') ?>"></script>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+  include "db/db.php";
+
 ?>
 
   <section>

@@ -5,7 +5,8 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+  include "db/db.php";
+
 ?>
 
   <h1 class="page-header text-center ">Ajout du club</h1>

@@ -1,13 +1,11 @@
 <?php $view->extend('base.html.php') ?>
 <?php $view['slots']->set('title', 'Rangeur') ?>
 <?php $view['slots']->start('body') ?>
-
-
 <?php
-//connexion a la bdd
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+  include "db/db.php";
+ ?>
 
-?>
+
 
   <form action="" method="post">
     <label for="">Jour de tir : </label>

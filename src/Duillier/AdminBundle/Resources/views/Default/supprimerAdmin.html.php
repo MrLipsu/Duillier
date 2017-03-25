@@ -5,7 +5,8 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8','root','root');
+  include "db/db.php";
+
 $reponse = $bdd->query('SELECT * FROM Admin WHERE login=\''.$_GET['login'].'\'');
 $donnees = $reponse->fetch();
 ?>

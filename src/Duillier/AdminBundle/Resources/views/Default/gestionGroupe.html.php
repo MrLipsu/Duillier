@@ -3,7 +3,8 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+  include "db/db.php";
+
 $clubQuery = $bdd->query('SELECT DISTINCT c.nom
                         FROM Participation p
                         JOIN tireur t ON p.idLicence=t.idLicence
@@ -23,7 +24,7 @@ while ($club = $clubQuery->fetch()){
 
   echo "<ul>";
   while($donnees = $reponse->fetch()){
-    echo "<li>".$donnees['prenomTireur']." ".$donnees['nomTireur']." -- Groupe ".$donnees['numGroupe']."</li>";    
+    echo "<li>".$donnees['prenomTireur']." ".$donnees['nomTireur']." -- Groupe ".$donnees['numGroupe']."</li>";
   }
   echo "</ul>";
 }

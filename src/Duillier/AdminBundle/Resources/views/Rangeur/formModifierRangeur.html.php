@@ -4,11 +4,7 @@
 
 <?php $view['slots']->start('body') ?>
 <script src="<?php echo $view['assets']->getUrl('jQuery/adminBundle/modifierRangeur.js') ?>"></script>
-<?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
-
-?>
 
   <section>
 
@@ -161,12 +157,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', ''
               <select id="club" name="club">  
                 <option value="">Pas de club choisi</option>  
                 <?php
-                $reponse = $bdd->query('SELECT * FROM club');
-                while ($donnees = $reponse->fetch()){
+                foreach ($clubs as $club) {
                   ?>
-                  <option value="<?php echo $donnees['idClub']; ?>" name="clubOption"><?php echo $donnees['nom'] ?></option>
+                  <option value="<?php echo $club->getIdClub(); ?>" name="clubOption"><?php echo $club->getNom(); ?></option>
                   <?php
                 }
+
                 ?>
               </select>
             </div>

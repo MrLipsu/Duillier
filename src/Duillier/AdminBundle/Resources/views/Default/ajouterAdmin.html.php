@@ -5,8 +5,8 @@
 <?php $view['slots']->start('body') ?>
 
 <?php
-//connexion a la bdd
-$bdd = new PDO('mysql:host=localhost;dbname=tsduillier;charset=utf8', 'root', '');
+  include "db/db.php";
+
 ?>
     <h1 class="page-header text-center">Ajout administrateur</h1>
         <form class="form-horizontal " method="post"  action="gestionAdmin">

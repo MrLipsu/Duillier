@@ -67,6 +67,10 @@ class RangeurController extends Controller
         }
 
       }
+
+      $clubs = $em->getRepository('DuillierPlanningBundle:Club' )->findAll();
+
+
       $em->flush();
 
 
@@ -103,7 +107,10 @@ class RangeurController extends Controller
         'heure' => $heure,
 
         //participation aux tirs
-        'tirsparticipes' => $tirsparticipes
+        'tirsparticipes' => $tirsparticipes,
+
+        //liste des clubs
+        'clubs' => $clubs
 
       ));
     }
@@ -134,8 +141,22 @@ class RangeurController extends Controller
         $em->remove($rangeur);
       }
 
+
+
       $participation = $em->getRepository('DuillierPlanningBundle:Participation' )->find($numLivret);
+      $idLicence = $participation->getIdLicence();
+
+      $tireur = $em->getRepository('DuillierPlanningBundle:Tireur' )->find($idLicence);
+      $email = $tireur->getMail();
+
+      $user = $em->getRepository('DuillierPlanningBundle:User' )->findOneBy(array(
+        'username'=>$email)
+      );
+      $em->remove($user);
+
       $em->remove($participation);
+
+
 
       $em->flush();
 
