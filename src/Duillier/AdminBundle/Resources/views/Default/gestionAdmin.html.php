@@ -10,17 +10,17 @@
 
 if(isset($_POST['supprimer'])){
   ?><div class="alert alert-success" role="alert">Suppression effectuée !</div><?php
-  $reponse = $bdd->query('SELECT * FROM admin WHERE login=\'' . $_POST['login'] . '\'');
+  $reponse = $bdd->query('SELECT * FROM user WHERE username=\'' . $_POST['login'] . '\'');
   $donnees = $reponse->fetch();
-  if($_POST['login']==$donnees['login']){
-    $bdd->exec('DELETE FROM Admin WHERE login=\'' . $_POST['login'] . '\'');
+  if($_POST['login']==$donnees['username']){
+    $bdd->exec('DELETE FROM user WHERE username=\'' . $_POST['login'] . '\'');
   }
 }
 
 include 'ajoutAdmin.html.php';
 
 
-$reponse = $bdd->query('SELECT * FROM admin ');
+$reponse = $bdd->query('SELECT * FROM user where roles = \'a:1:{i:0;s:10:"ROLE_ADMIN";}\'');
 
 
 ?>
@@ -45,8 +45,8 @@ $reponse = $bdd->query('SELECT * FROM admin ');
   while ($donnees = $reponse->fetch()){
     ?>
     <tr>
-    <td><?php echo $donnees['login']; ?> </td>
-      <td><?php echo "<a href=\"supprimerAdmin?action=supprimer&login=".$donnees['login']."\"  <span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a>"; ?></td>
+    <td><?php echo $donnees['username']; ?> </td>
+      <td><?php echo "<a href=\"supprimerAdmin?action=supprimer&login=".$donnees['username']."\"  <span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a>"; ?></td>
     </tr>
     <?php
   }

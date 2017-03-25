@@ -463,21 +463,13 @@ class Tireur
   *
   * @return Tireur
   */
-  public function setMdp($mdp)
+  public function setMdp($mail)
   {
-    $this->mdp = $mdp;
+    $this->mail = $mail;
 
     return $this;
   }
 
-  /**
-  * Get mdp
-  *
-  * @return string
-  */
-  public function getMdp()
-  {
-    return $this->mdp;
-  }
+
 
 }
