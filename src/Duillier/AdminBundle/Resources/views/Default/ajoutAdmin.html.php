@@ -41,7 +41,7 @@
 
 
     if($testAjoutAdmin==1){
-          $reponse = $bdd->query('SELECT login FROM Admin WHERE login=\'' . $_POST['login'] . '\'');
+          $reponse = $bdd->query('SELECT username FROM user WHERE username=\'' . $_POST['login'] . '\'');
           $donnees = $reponse->fetch();
 
               if($_POST['login']==$donnees['login']){
